@@ -1,0 +1,24 @@
+# You can disable rules that have been enabled by default
+disabled_rules:
+  - identifier_name
+  - force_cast
+  - trailing_whitespace
+  - line_length
+
+# Similarly, you can enable rules that have been disabled by default
+opt_in_rules:
+  - first_where
+
+# Exclude directories that you don't want to lint
+excluded:
+  - Pods
+  - fastlane
+
+# Use "xcode" so that when you build, the result will be shown in Xcode
+reporter: "xcode" # Other reporters: json, csv, checkstyle, junit, html, emoji
+
+# The rule `function_body_length` by default triggers warning at 40, error at 100
+# This example increases by 3 times
+function_body_length:
+  warning: 200
+  error: 500

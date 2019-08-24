@@ -24,6 +24,17 @@ class FridgeViewController: UIViewController {
         return collectionView
     }()
     
+    lazy var redButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Colocar na geladeira", for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+        button.setTitleColor(UIColor.AppColors.lightGray, for: .normal)
+        button.backgroundColor = UIColor.AppColors.red
+        button.layer.cornerRadius = 10
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.AppColors.lightGray
@@ -33,21 +44,29 @@ class FridgeViewController: UIViewController {
     
     func configConstrints() {
         NSLayoutConstraint.activate([
+            collectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
             collectionView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            collectionView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             collectionView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.9),
-            collectionView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.6)
+            collectionView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.85)
+            ])
+        
+        NSLayoutConstraint.activate([
+            redButton.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: view.frame.width * 0.05),
+            redButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            redButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.9),
+            redButton.heightAnchor.constraint(equalTo: redButton.widthAnchor, multiplier: 0.15)
             ])
     }
     
     func addSubviews() {
         view.addSubview(collectionView)
+        view.addSubview(redButton)
     }
 }
 
 extension FridgeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10 //tem que somar pra poder sempre tem a barrinha nos 3 primeiros
+        return 16 //tem que somar pra poder sempre tem a barrinha nos 3 primeiros
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

@@ -16,6 +16,7 @@
 		A4570036231067DB000E9500 /* FridgeAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4570035231067DB000E9500 /* FridgeAppUITests.swift */; };
 		A457004A23116896000E9500 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A457004923116896000E9500 /* Coordinator.swift */; };
 		A457004C23116A36000E9500 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A457004B23116A36000E9500 /* MainCoordinator.swift */; };
+		A457004E231170C1000E9500 /* UIColors + AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A457004D231170C1000E9500 /* UIColors + AppColors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		A4570037231067DB000E9500 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A457004923116896000E9500 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		A457004B23116A36000E9500 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		A457004D231170C1000E9500 /* UIColors + AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColors + AppColors.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				A4570012231067D9000E9500 /* AppDelegate.swift */,
+				A457004D231170C1000E9500 /* UIColors + AppColors.swift */,
 				A457004923116896000E9500 /* Coordinator.swift */,
 				A457004B23116A36000E9500 /* MainCoordinator.swift */,
 				A4570014231067D9000E9500 /* FridgeViewController.swift */,
@@ -287,6 +290,7 @@
 				A457004C23116A36000E9500 /* MainCoordinator.swift in Sources */,
 				A4570013231067D9000E9500 /* AppDelegate.swift in Sources */,
 				A457001B231067D9000E9500 /* FridgeApp.xcdatamodeld in Sources */,
+				A457004E231170C1000E9500 /* UIColors + AppColors.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

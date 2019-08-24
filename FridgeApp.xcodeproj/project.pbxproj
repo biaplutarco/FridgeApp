@@ -14,6 +14,8 @@
 		A4570020231067DB000E9500 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A457001E231067DB000E9500 /* LaunchScreen.storyboard */; };
 		A457002B231067DB000E9500 /* FridgeAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A457002A231067DB000E9500 /* FridgeAppTests.swift */; };
 		A4570036231067DB000E9500 /* FridgeAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4570035231067DB000E9500 /* FridgeAppUITests.swift */; };
+		A457004A23116896000E9500 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A457004923116896000E9500 /* Coordinator.swift */; };
+		A457004C23116A36000E9500 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A457004B23116A36000E9500 /* MainCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,8 @@
 		A4570031231067DB000E9500 /* FridgeAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FridgeAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4570035231067DB000E9500 /* FridgeAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FridgeAppUITests.swift; sourceTree = "<group>"; };
 		A4570037231067DB000E9500 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A457004923116896000E9500 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		A457004B23116A36000E9500 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +102,8 @@
 			isa = PBXGroup;
 			children = (
 				A4570012231067D9000E9500 /* AppDelegate.swift */,
+				A457004923116896000E9500 /* Coordinator.swift */,
+				A457004B23116A36000E9500 /* MainCoordinator.swift */,
 				A4570014231067D9000E9500 /* ViewController.swift */,
 				A457001C231067DB000E9500 /* Assets.xcassets */,
 				A457001E231067DB000E9500 /* LaunchScreen.storyboard */,
@@ -276,7 +282,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A457004A23116896000E9500 /* Coordinator.swift in Sources */,
 				A4570015231067D9000E9500 /* ViewController.swift in Sources */,
+				A457004C23116A36000E9500 /* MainCoordinator.swift in Sources */,
 				A4570013231067D9000E9500 /* AppDelegate.swift in Sources */,
 				A457001B231067D9000E9500 /* FridgeApp.xcdatamodeld in Sources */,
 			);

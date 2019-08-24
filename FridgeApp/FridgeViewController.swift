@@ -37,6 +37,13 @@ class FridgeViewController: UIViewController {
         return button
     }()
     
+    lazy var blurredBackgroundView: UIVisualEffectView = {
+        let visualEffectView = UIVisualEffectView()
+        visualEffectView.frame = view.frame
+        visualEffectView.effect = UIBlurEffect(style: .dark)
+        return visualEffectView
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.AppColors.lightGray
@@ -50,7 +57,7 @@ class FridgeViewController: UIViewController {
         coordinator?.addProduct()
     }
     
-    func configConstrints() {
+    private func configConstrints() {
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
             collectionView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -66,9 +73,10 @@ class FridgeViewController: UIViewController {
             ])
     }
     
-    func addSubviews() {
+    private func addSubviews() {
         view.addSubview(collectionView)
         view.addSubview(redButton)
+        view.addSubview(blurredBackgroundView)
     }
 }
 

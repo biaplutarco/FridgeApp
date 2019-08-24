@@ -32,6 +32,7 @@ class FridgeViewController: UIViewController {
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = UIColor.AppColors.red
         button.layer.cornerRadius = 10
+        button.addTarget(self, action: #selector(goToModal(_:)), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -45,12 +46,16 @@ class FridgeViewController: UIViewController {
         print(CoreDataManager.shared.getProducts())
     }
     
+    @objc func goToModal(_ sender: UIButton) {
+        coordinator?.addProduct()
+    }
+    
     func configConstrints() {
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
             collectionView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             collectionView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.9),
-            collectionView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.85)
+            collectionView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.86)
             ])
         
         NSLayoutConstraint.activate([
@@ -75,11 +80,9 @@ extension FridgeViewController: UICollectionViewDelegate, UICollectionViewDataSo
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProductCell", for: indexPath) as? ProductCell else { return UICollectionViewCell() }
         return cell
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 100, height: 90)
     }
-    
 }

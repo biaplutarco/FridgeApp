@@ -32,4 +32,10 @@ class MainCoordinator: Coordinator {
         vc.title = "Sua Geladeira"
         navigationController.pushViewController(vc, animated: false)
     }
+    
+    func addProduct() {
+        let vc = AddModalViewController()
+        vc.coordinator = self
+        navigationController.present(vc, animated: false, completion: nil)
+    }
 }

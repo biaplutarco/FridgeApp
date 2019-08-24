@@ -14,7 +14,6 @@ class ProductCell: UICollectionViewCell {
         label.font = UIFont.boldSystemFont(ofSize: 12)
         label.text = "Maionese"
         label.textColor = UIColor.AppColors.darkGray
-//        label.backgroundColor = UIColor.AppColors.red
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -36,7 +35,6 @@ class ProductCell: UICollectionViewCell {
         label.textColor = UIColor.AppColors.darkGray
         label.text = "12 dias"
         label.textAlignment = .right
-//        label.backgroundColor = UIColor.AppColors.red
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -47,7 +45,6 @@ class ProductCell: UICollectionViewCell {
         label.text = "restantes"
         label.textAlignment = .right
         label.textColor = UIColor.AppColors.darkGray
-//        label.backgroundColor = UIColor.AppColors.red
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -58,7 +55,7 @@ class ProductCell: UICollectionViewCell {
         addSubviews()
         configConstraints()
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

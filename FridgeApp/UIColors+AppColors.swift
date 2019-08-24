@@ -13,5 +13,6 @@ extension UIColor {
         static let red = UIColor.init(named: "Red")
         static let lightRed = UIColor.init(named: "LightRed")
         static let lightGray = UIColor.init(named: "LightGray")
+        static let darkGray = UIColor.init(named: "DarkGray")
     }
 }

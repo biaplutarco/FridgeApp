@@ -21,13 +21,15 @@ class MainCoordinator: Coordinator {
     private func configNavController() {
         navigationController.navigationBar.prefersLargeTitles = true
         navigationController.navigationBar.barTintColor = UIColor.AppColors.lightGray
+        navigationController.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.AppColors.darkGray!]
+        navigationController.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.AppColors.darkGray!]
         navigationController.navigationBar.shadowImage = UIImage()
     }
     
     func start() {
         let vc = FridgeViewController()
         vc.coordinator = self
-        vc.title = "Title"
+        vc.title = "Sua Geladeira"
         navigationController.pushViewController(vc, animated: false)
     }
 }

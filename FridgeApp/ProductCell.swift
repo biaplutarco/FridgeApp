@@ -13,6 +13,7 @@ class ProductCell: UICollectionViewCell {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 12)
         label.text = "Maionese"
+        label.textColor = UIColor.AppColors.darkGray
 //        label.backgroundColor = UIColor.AppColors.red
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -20,7 +21,9 @@ class ProductCell: UICollectionViewCell {
     
     lazy var imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = UIColor.AppColors.lightRed
+        imageView.image = #imageLiteral(resourceName: "CutMilk")
+        imageView.tintColor = UIColor.AppColors.red
+        imageView.layer.opacity = 0.08
         imageView.layer.cornerRadius = 10
         imageView.layer.maskedCorners = [.layerMinXMaxYCorner]
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -29,7 +32,8 @@ class ProductCell: UICollectionViewCell {
     
     lazy var daysLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 16)
+        label.font = UIFont.boldSystemFont(ofSize: 18)
+        label.textColor = UIColor.AppColors.darkGray
         label.text = "12 dias"
         label.textAlignment = .right
 //        label.backgroundColor = UIColor.AppColors.red
@@ -42,6 +46,7 @@ class ProductCell: UICollectionViewCell {
         label.font = UIFont.systemFont(ofSize: 11)
         label.text = "restantes"
         label.textAlignment = .right
+        label.textColor = UIColor.AppColors.darkGray
 //        label.backgroundColor = UIColor.AppColors.red
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -87,7 +92,7 @@ class ProductCell: UICollectionViewCell {
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 10),
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
-            titleLabel.trailingAnchor.constraint(equalTo: leadingAnchor, constant: frame.width - 10),
+            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
             titleLabel.bottomAnchor.constraint(equalTo: imageView.topAnchor)
             ])
         
@@ -99,14 +104,14 @@ class ProductCell: UICollectionViewCell {
         
         NSLayoutConstraint.activate([
             daysLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
-            daysLabel.trailingAnchor.constraint(equalTo: leadingAnchor, constant: frame.width - 10),
+            daysLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
             daysLabel.bottomAnchor.constraint(equalTo: bottomLabel.topAnchor)
             ])
         
         NSLayoutConstraint.activate([
             bottomLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
-            bottomLabel.trailingAnchor.constraint(equalTo: leadingAnchor, constant: frame.width - 10),
-            bottomLabel.bottomAnchor.constraint(equalTo: topAnchor, constant: frame.height - 10)
+            bottomLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+            bottomLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10)
             ])
     }
 }

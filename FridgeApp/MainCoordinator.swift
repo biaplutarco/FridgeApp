@@ -15,10 +15,15 @@ class MainCoordinator: Coordinator {
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
+        configNavController()
+    }
+    
+    private func configNavController() {
+        navigationController.navigationBar.prefersLargeTitles = true
     }
     
     func start() {
-        let vc = ViewController()
+        let vc = FridgeViewController()
         vc.coordinator = self
         navigationController.pushViewController(vc, animated: false)
     }

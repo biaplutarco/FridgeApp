@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class FridgeViewController: UIViewController {
     weak var coordinator: MainCoordinator?
 
     override func viewDidLoad() {

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class FridgeViewController: UIViewController {
     weak var coordinator: MainCoordinator?
@@ -28,7 +29,7 @@ class FridgeViewController: UIViewController {
         let button = UIButton()
         button.setTitle("Colocar na geladeira", for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
-        button.setTitleColor(UIColor.AppColors.lightGray, for: .normal)
+        button.setTitleColor(.white, for: .normal)
         button.backgroundColor = UIColor.AppColors.red
         button.layer.cornerRadius = 10
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -40,6 +41,8 @@ class FridgeViewController: UIViewController {
         view.backgroundColor = UIColor.AppColors.lightGray
         addSubviews()
         configConstrints()
+        CoreDataManager.shared.saveProductWith(title: "test", imageNamed: "test", colorNamed: "test", andDaysLeft: "test")
+        print(CoreDataManager.shared.getProducts())
     }
     
     func configConstrints() {

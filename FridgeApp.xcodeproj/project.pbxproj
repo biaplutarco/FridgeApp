@@ -19,6 +19,7 @@
 		A457004E231170C1000E9500 /* UIColors+AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A457004D231170C1000E9500 /* UIColors+AppColors.swift */; };
 		A457005223118DED000E9500 /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A457005123118DED000E9500 /* ProductCell.swift */; };
 		A45700582311BDA8000E9500 /* SeparatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45700572311BDA8000E9500 /* SeparatorCell.swift */; };
+		A457005E2311F7E4000E9500 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A457005D2311F7E4000E9500 /* CoreDataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		A457004D231170C1000E9500 /* UIColors+AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColors+AppColors.swift"; sourceTree = "<group>"; };
 		A457005123118DED000E9500 /* ProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
 		A45700572311BDA8000E9500 /* SeparatorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatorCell.swift; sourceTree = "<group>"; };
+		A457005D2311F7E4000E9500 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,13 +109,12 @@
 		A4570011231067D9000E9500 /* FridgeApp */ = {
 			isa = PBXGroup;
 			children = (
+				A457005B2311F6DE000E9500 /* Coordinator */,
 				A4570012231067D9000E9500 /* AppDelegate.swift */,
 				A457004D231170C1000E9500 /* UIColors+AppColors.swift */,
-				A457004923116896000E9500 /* Coordinator.swift */,
-				A457004B23116A36000E9500 /* MainCoordinator.swift */,
-				A457005123118DED000E9500 /* ProductCell.swift */,
-				A45700572311BDA8000E9500 /* SeparatorCell.swift */,
 				A4570014231067D9000E9500 /* FridgeViewController.swift */,
+				A457005D2311F7E4000E9500 /* CoreDataManager.swift */,
+				A457005C2311F742000E9500 /* Cell */,
 				A457001C231067DB000E9500 /* Assets.xcassets */,
 				A457001E231067DB000E9500 /* LaunchScreen.storyboard */,
 				A4570021231067DB000E9500 /* Info.plist */,
@@ -138,6 +139,24 @@
 				A4570037231067DB000E9500 /* Info.plist */,
 			);
 			path = FridgeAppUITests;
+			sourceTree = "<group>";
+		};
+		A457005B2311F6DE000E9500 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				A457004B23116A36000E9500 /* MainCoordinator.swift */,
+				A457004923116896000E9500 /* Coordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		A457005C2311F742000E9500 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				A457005123118DED000E9500 /* ProductCell.swift */,
+				A45700572311BDA8000E9500 /* SeparatorCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -297,6 +316,7 @@
 				A4570013231067D9000E9500 /* AppDelegate.swift in Sources */,
 				A457001B231067D9000E9500 /* FridgeApp.xcdatamodeld in Sources */,
 				A457005223118DED000E9500 /* ProductCell.swift in Sources */,
+				A457005E2311F7E4000E9500 /* CoreDataManager.swift in Sources */,
 				A457004E231170C1000E9500 /* UIColors+AppColors.swift in Sources */,
 				A45700582311BDA8000E9500 /* SeparatorCell.swift in Sources */,
 			);

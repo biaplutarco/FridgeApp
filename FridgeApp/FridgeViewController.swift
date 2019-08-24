@@ -19,7 +19,8 @@ class FridgeViewController: UIViewController {
         collectionView.dataSource = self
         collectionView.backgroundColor = .clear
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.register(ProductCell.self, forCellWithReuseIdentifier: "MyCell")
+        collectionView.register(ProductCell.self, forCellWithReuseIdentifier: "ProductCell")
+        collectionView.register(SeparatorCell.self, forCellWithReuseIdentifier: "SeparatorCell")
         return collectionView
     }()
     
@@ -46,15 +47,17 @@ class FridgeViewController: UIViewController {
 
 extension FridgeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 12
+        return 10 //tem que somar pra poder sempre tem a barrinha nos 3 primeiros
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let myCell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyCell", for: indexPath)
-        return myCell
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProductCell", for: indexPath) as? ProductCell else { return UICollectionViewCell() }
+        return cell
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 100, height: 90)
     }
+    
 }

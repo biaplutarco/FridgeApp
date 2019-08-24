@@ -18,6 +18,7 @@
 		A457004C23116A36000E9500 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A457004B23116A36000E9500 /* MainCoordinator.swift */; };
 		A457004E231170C1000E9500 /* UIColors+AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A457004D231170C1000E9500 /* UIColors+AppColors.swift */; };
 		A457005223118DED000E9500 /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A457005123118DED000E9500 /* ProductCell.swift */; };
+		A45700582311BDA8000E9500 /* SeparatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45700572311BDA8000E9500 /* SeparatorCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		A457004B23116A36000E9500 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		A457004D231170C1000E9500 /* UIColors+AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColors+AppColors.swift"; sourceTree = "<group>"; };
 		A457005123118DED000E9500 /* ProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
+		A45700572311BDA8000E9500 /* SeparatorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatorCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +112,7 @@
 				A457004923116896000E9500 /* Coordinator.swift */,
 				A457004B23116A36000E9500 /* MainCoordinator.swift */,
 				A457005123118DED000E9500 /* ProductCell.swift */,
+				A45700572311BDA8000E9500 /* SeparatorCell.swift */,
 				A4570014231067D9000E9500 /* FridgeViewController.swift */,
 				A457001C231067DB000E9500 /* Assets.xcassets */,
 				A457001E231067DB000E9500 /* LaunchScreen.storyboard */,
@@ -295,6 +298,7 @@
 				A457001B231067D9000E9500 /* FridgeApp.xcdatamodeld in Sources */,
 				A457005223118DED000E9500 /* ProductCell.swift in Sources */,
 				A457004E231170C1000E9500 /* UIColors+AppColors.swift in Sources */,
+				A45700582311BDA8000E9500 /* SeparatorCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

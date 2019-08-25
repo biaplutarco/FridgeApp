@@ -22,6 +22,7 @@
 		A457005E2311F7E4000E9500 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A457005D2311F7E4000E9500 /* CoreDataManager.swift */; };
 		A45700602311FE10000E9500 /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A457005F2311FE10000E9500 /* ModalViewController.swift */; };
 		A457006423120C02000E9500 /* ModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A457006323120C02000E9500 /* ModalView.swift */; };
+		A4C6B9DF2312F47700BD5150 /* IconCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C6B9DE2312F47700BD5150 /* IconCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		A457005D2311F7E4000E9500 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		A457005F2311FE10000E9500 /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
 		A457006323120C02000E9500 /* ModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalView.swift; sourceTree = "<group>"; };
+		A4C6B9DE2312F47700BD5150 /* IconCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +162,7 @@
 			children = (
 				A457005123118DED000E9500 /* ProductCell.swift */,
 				A45700572311BDA8000E9500 /* SeparatorCell.swift */,
+				A4C6B9DE2312F47700BD5150 /* IconCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -326,6 +329,7 @@
 			files = (
 				A457004A23116896000E9500 /* Coordinator.swift in Sources */,
 				A4570015231067D9000E9500 /* ViewController.swift in Sources */,
+				A4C6B9DF2312F47700BD5150 /* IconCell.swift in Sources */,
 				A457004C23116A36000E9500 /* MainCoordinator.swift in Sources */,
 				A4570013231067D9000E9500 /* AppDelegate.swift in Sources */,
 				A45700602311FE10000E9500 /* ModalViewController.swift in Sources */,

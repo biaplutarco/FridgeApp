@@ -19,6 +19,7 @@ class ViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.backgroundColor = .clear
+        collectionView.alwaysBounceVertical = true
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.register(ProductCell.self, forCellWithReuseIdentifier: "ProductCell")
         collectionView.register(SeparatorCell.self, forCellWithReuseIdentifier: "SeparatorCell")

@@ -9,6 +9,13 @@
 import UIKit
 
 class ModalView: UIView {
+//    lazy var flowLayout: UICollectionViewFlowLayout = {
+//        let flowLayout = UICollectionViewFlowLayout()
+//        flowLayout.scrollDirection = .horizontal
+//        flowLayout.minimumLineSpacing = 16
+//        return flowLayout
+//    }()
+    
     lazy var iconCollectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .horizontal
@@ -19,7 +26,23 @@ class ModalView: UIView {
         collectionView.alwaysBounceHorizontal = true
         collectionView.dataSource = self
         collectionView.delegate = self
+        collectionView.tag = 0
         collectionView.register(IconCell.self, forCellWithReuseIdentifier: "IconCell")
+        return collectionView
+    }()
+    
+    lazy var colorCollectionView: UICollectionView = {
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.scrollDirection = .horizontal
+        flowLayout.minimumLineSpacing = 16
+        let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: flowLayout)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.backgroundColor = .clear
+        collectionView.alwaysBounceHorizontal = true
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.tag = 1
+        collectionView.register(ColorCell.self, forCellWithReuseIdentifier: "ColorCell")
         return collectionView
     }()
     
@@ -36,6 +59,7 @@ class ModalView: UIView {
     
     private func addSubviews() {
         addSubview(iconCollectionView)
+        addSubview(colorCollectionView)
     }
     
     private func configView() {
@@ -50,6 +74,13 @@ class ModalView: UIView {
             iconCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12),
             iconCollectionView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.2)
             ])
+        
+        NSLayoutConstraint.activate([
+            colorCollectionView.topAnchor.constraint(equalTo: iconCollectionView.bottomAnchor),
+            colorCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12),
+            colorCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12),
+            colorCollectionView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.1)
+            ])
     }
 }
 
@@ -59,14 +90,27 @@ extension ModalView: UICollectionViewDelegate, UICollectionViewDataSource, UICol
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "IconCell", for: indexPath) as? IconCell else { return UICollectionViewCell() }
-        cell.imageView.image = #imageLiteral(resourceName: "Meat")
-        return cell
+        if collectionView.tag == 0 {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "IconCell", for: indexPath) as? IconCell else { return UICollectionViewCell() }
+            cell.setUpCellWith(image: #imageLiteral(resourceName: "Meat"))
+            return cell
+        } else {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ColorCell", for: indexPath) as? ColorCell else { return UICollectionViewCell() }
+            cell.setUpCellWith(color: UIColor.AppColors.red!)
+            return cell
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
-        collectionView.cellForItem(at: indexPath)?.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
+        if collectionView.tag == 0 {
+            collectionView.cellForItem(at: indexPath)?.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
+            print("a")
+        } else {
+            print("b")
+            collectionView.cellForItem(at: indexPath)?.transform = CGAffineTransform(scaleX: 1.4, y: 1.4)
+        }
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
@@ -75,5 +119,13 @@ extension ModalView: UICollectionViewDelegate, UICollectionViewDataSource, UICol
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if collectionView.tag == 0 {
+            return CGSize(width: iconCollectionView.frame.height/1.2, height: iconCollectionView.frame.height/1.2)
+        } else {
+            return CGSize(width: colorCollectionView.frame.height/2, height: colorCollectionView.frame.height/2)
+        }
     }
 }

@@ -52,6 +52,10 @@ class ViewController: UIViewController {
         configConstrints()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        blurredView.removeFromSuperview()
+    }
+    
     @objc func goToModal(_ sender: UIButton) {
         navigationController?.view.addSubview(blurredView)
         coordinator?.addProduct(image: screenShotMethod())

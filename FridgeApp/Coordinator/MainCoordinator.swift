@@ -35,17 +35,9 @@ class MainCoordinator: Coordinator {
     func addProduct(image: UIImage) {
         let vc = ModalViewController()
         vc.coordinator = self
-        vc.delegate = self
         navigationController.present(vc, animated: true) {
             vc.setUpModelView(image: image)
             vc.configBackgroundImageView()
         }
-    }
-}
-
-extension MainCoordinator: ModalViewControllerDelegate {
-    func removeBlurredView() {
-        let vc = ViewController()
-        vc.blurredView.removeFromSuperview()
     }
 }

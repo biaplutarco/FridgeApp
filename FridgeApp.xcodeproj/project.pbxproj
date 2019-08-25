@@ -21,7 +21,6 @@
 		A45700582311BDA8000E9500 /* SeparatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45700572311BDA8000E9500 /* SeparatorCell.swift */; };
 		A457005E2311F7E4000E9500 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A457005D2311F7E4000E9500 /* CoreDataManager.swift */; };
 		A45700602311FE10000E9500 /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A457005F2311FE10000E9500 /* ModalViewController.swift */; };
-		A457006223120503000E9500 /* ModalViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A457006123120503000E9500 /* ModalViewControllerDelegate.swift */; };
 		A457006423120C02000E9500 /* ModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A457006323120C02000E9500 /* ModalView.swift */; };
 /* End PBXBuildFile section */
 
@@ -63,7 +62,6 @@
 		A45700572311BDA8000E9500 /* SeparatorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatorCell.swift; sourceTree = "<group>"; };
 		A457005D2311F7E4000E9500 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		A457005F2311FE10000E9500 /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
-		A457006123120503000E9500 /* ModalViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewControllerDelegate.swift; sourceTree = "<group>"; };
 		A457006323120C02000E9500 /* ModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -171,7 +169,6 @@
 			children = (
 				A457006323120C02000E9500 /* ModalView.swift */,
 				A457005F2311FE10000E9500 /* ModalViewController.swift */,
-				A457006123120503000E9500 /* ModalViewControllerDelegate.swift */,
 			);
 			path = Modal;
 			sourceTree = "<group>";
@@ -330,7 +327,6 @@
 				A457004A23116896000E9500 /* Coordinator.swift in Sources */,
 				A4570015231067D9000E9500 /* ViewController.swift in Sources */,
 				A457004C23116A36000E9500 /* MainCoordinator.swift in Sources */,
-				A457006223120503000E9500 /* ModalViewControllerDelegate.swift in Sources */,
 				A4570013231067D9000E9500 /* AppDelegate.swift in Sources */,
 				A45700602311FE10000E9500 /* ModalViewController.swift in Sources */,
 				A457006423120C02000E9500 /* ModalView.swift in Sources */,

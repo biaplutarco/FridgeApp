@@ -87,10 +87,9 @@ class ProductCell: UICollectionViewCell {
     
     private func configConstraints() {
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 10),
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
-            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
-            titleLabel.bottomAnchor.constraint(equalTo: imageView.topAnchor)
+            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 8),
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
+            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8)
             ])
         
         NSLayoutConstraint.activate([
@@ -100,15 +99,15 @@ class ProductCell: UICollectionViewCell {
             ])
         
         NSLayoutConstraint.activate([
-            daysLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
-            daysLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+            daysLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
+            daysLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
             daysLabel.bottomAnchor.constraint(equalTo: bottomLabel.topAnchor)
             ])
         
         NSLayoutConstraint.activate([
-            bottomLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
-            bottomLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
-            bottomLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10)
+            bottomLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
+            bottomLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
+            bottomLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8)
             ])
     }
 }

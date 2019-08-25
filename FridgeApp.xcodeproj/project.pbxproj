@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A4570013231067D9000E9500 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4570012231067D9000E9500 /* AppDelegate.swift */; };
-		A4570015231067D9000E9500 /* FridgeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4570014231067D9000E9500 /* FridgeViewController.swift */; };
+		A4570015231067D9000E9500 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4570014231067D9000E9500 /* ViewController.swift */; };
 		A457001B231067D9000E9500 /* FridgeApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A4570019231067D9000E9500 /* FridgeApp.xcdatamodeld */; };
 		A457001D231067DB000E9500 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A457001C231067DB000E9500 /* Assets.xcassets */; };
 		A4570020231067DB000E9500 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A457001E231067DB000E9500 /* LaunchScreen.storyboard */; };
@@ -20,7 +20,9 @@
 		A457005223118DED000E9500 /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A457005123118DED000E9500 /* ProductCell.swift */; };
 		A45700582311BDA8000E9500 /* SeparatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45700572311BDA8000E9500 /* SeparatorCell.swift */; };
 		A457005E2311F7E4000E9500 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A457005D2311F7E4000E9500 /* CoreDataManager.swift */; };
-		A45700602311FE10000E9500 /* AddModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A457005F2311FE10000E9500 /* AddModalViewController.swift */; };
+		A45700602311FE10000E9500 /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A457005F2311FE10000E9500 /* ModalViewController.swift */; };
+		A457006223120503000E9500 /* ModalViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A457006123120503000E9500 /* ModalViewControllerDelegate.swift */; };
+		A457006423120C02000E9500 /* ModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A457006323120C02000E9500 /* ModalView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,7 +45,7 @@
 /* Begin PBXFileReference section */
 		A457000F231067D9000E9500 /* FridgeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FridgeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4570012231067D9000E9500 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A4570014231067D9000E9500 /* FridgeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FridgeViewController.swift; sourceTree = "<group>"; };
+		A4570014231067D9000E9500 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A457001A231067D9000E9500 /* FridgeApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FridgeApp.xcdatamodel; sourceTree = "<group>"; };
 		A457001C231067DB000E9500 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A457001F231067DB000E9500 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -60,7 +62,9 @@
 		A457005123118DED000E9500 /* ProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
 		A45700572311BDA8000E9500 /* SeparatorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatorCell.swift; sourceTree = "<group>"; };
 		A457005D2311F7E4000E9500 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
-		A457005F2311FE10000E9500 /* AddModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddModalViewController.swift; sourceTree = "<group>"; };
+		A457005F2311FE10000E9500 /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
+		A457006123120503000E9500 /* ModalViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewControllerDelegate.swift; sourceTree = "<group>"; };
+		A457006323120C02000E9500 /* ModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,8 +119,8 @@
 				A4570012231067D9000E9500 /* AppDelegate.swift */,
 				A457004D231170C1000E9500 /* UIColors+AppColors.swift */,
 				A457005D2311F7E4000E9500 /* CoreDataManager.swift */,
-				A4570014231067D9000E9500 /* FridgeViewController.swift */,
-				A457005F2311FE10000E9500 /* AddModalViewController.swift */,
+				A4570014231067D9000E9500 /* ViewController.swift */,
+				A457006523120CA5000E9500 /* Modal */,
 				A457005C2311F742000E9500 /* Cell */,
 				A457001C231067DB000E9500 /* Assets.xcassets */,
 				A457001E231067DB000E9500 /* LaunchScreen.storyboard */,
@@ -160,6 +164,16 @@
 				A45700572311BDA8000E9500 /* SeparatorCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		A457006523120CA5000E9500 /* Modal */ = {
+			isa = PBXGroup;
+			children = (
+				A457006323120C02000E9500 /* ModalView.swift */,
+				A457005F2311FE10000E9500 /* ModalViewController.swift */,
+				A457006123120503000E9500 /* ModalViewControllerDelegate.swift */,
+			);
+			path = Modal;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -314,10 +328,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				A457004A23116896000E9500 /* Coordinator.swift in Sources */,
-				A4570015231067D9000E9500 /* FridgeViewController.swift in Sources */,
+				A4570015231067D9000E9500 /* ViewController.swift in Sources */,
 				A457004C23116A36000E9500 /* MainCoordinator.swift in Sources */,
+				A457006223120503000E9500 /* ModalViewControllerDelegate.swift in Sources */,
 				A4570013231067D9000E9500 /* AppDelegate.swift in Sources */,
-				A45700602311FE10000E9500 /* AddModalViewController.swift in Sources */,
+				A45700602311FE10000E9500 /* ModalViewController.swift in Sources */,
+				A457006423120C02000E9500 /* ModalView.swift in Sources */,
 				A457001B231067D9000E9500 /* FridgeApp.xcdatamodeld in Sources */,
 				A457005223118DED000E9500 /* ProductCell.swift in Sources */,
 				A457005E2311F7E4000E9500 /* CoreDataManager.swift in Sources */,

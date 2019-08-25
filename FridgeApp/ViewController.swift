@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class FridgeViewController: UIViewController {
+class ViewController: UIViewController {
     weak var coordinator: MainCoordinator?
     
     lazy var collectionView: UICollectionView = {
@@ -37,10 +37,11 @@ class FridgeViewController: UIViewController {
         return button
     }()
     
-    lazy var blurredBackgroundView: UIVisualEffectView = {
+    lazy var blurredView: UIVisualEffectView = {
         let visualEffectView = UIVisualEffectView()
         visualEffectView.frame = view.frame
         visualEffectView.effect = UIBlurEffect(style: .dark)
+        view.bringSubviewToFront(visualEffectView)
         return visualEffectView
     }()
     
@@ -49,12 +50,19 @@ class FridgeViewController: UIViewController {
         view.backgroundColor = UIColor.AppColors.lightGray
         addSubviews()
         configConstrints()
-        CoreDataManager.shared.saveProductWith(title: "test", imageNamed: "test", colorNamed: "test", andDaysLeft: "test")
-        print(CoreDataManager.shared.getProducts())
     }
     
     @objc func goToModal(_ sender: UIButton) {
-        coordinator?.addProduct()
+        navigationController?.view.addSubview(blurredView)
+        coordinator?.addProduct(image: screenShotMethod())
+    }
+    
+    func screenShotMethod() -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(view.bounds.size, false, 0)
+        view.drawHierarchy(in: view.bounds, afterScreenUpdates: true)
+        guard let image = UIGraphicsGetImageFromCurrentImageContext() else { return UIImage() }
+        UIGraphicsEndImageContext()
+        return image
     }
     
     private func configConstrints() {
@@ -76,11 +84,10 @@ class FridgeViewController: UIViewController {
     private func addSubviews() {
         view.addSubview(collectionView)
         view.addSubview(redButton)
-        view.addSubview(blurredBackgroundView)
     }
 }
 
-extension FridgeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 16 //tem que somar pra poder sempre tem a barrinha nos 3 primeiros
     }

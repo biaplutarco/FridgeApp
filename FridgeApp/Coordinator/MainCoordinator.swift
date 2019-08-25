@@ -10,7 +10,6 @@ import UIKit
 
 class MainCoordinator: Coordinator {
     var childCoordinators = [Coordinator]()
-    
     var navigationController: UINavigationController
     
     init(navigationController: UINavigationController) {
@@ -27,15 +26,26 @@ class MainCoordinator: Coordinator {
     }
     
     func start() {
-        let vc = FridgeViewController()
+        let vc = ViewController()
         vc.coordinator = self
         vc.title = "Sua Geladeira"
         navigationController.pushViewController(vc, animated: false)
     }
     
-    func addProduct() {
-        let vc = AddModalViewController()
+    func addProduct(image: UIImage) {
+        let vc = ModalViewController()
         vc.coordinator = self
-        navigationController.present(vc, animated: false, completion: nil)
+        vc.delegate = self
+        navigationController.present(vc, animated: true) {
+            vc.setUpModelView(image: image)
+            vc.configBackgroundImageView()
+        }
+    }
+}
+
+extension MainCoordinator: ModalViewControllerDelegate {
+    func removeBlurredView() {
+        let vc = ViewController()
+        vc.blurredView.removeFromSuperview()
     }
 }

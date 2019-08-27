@@ -21,6 +21,20 @@ class InputCell: UITableViewCell {
         return textField
     }()
     
+    lazy var datePicker: UIDatePicker = {
+        let datePicker = UIDatePicker()
+        datePicker.datePickerMode = .date
+        datePicker.addTarget(self, action: #selector(datePickerChanged(_:)), for: .valueChanged)
+        return datePicker
+    }()
+    
+    lazy var dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .none
+        return formatter
+    }()
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         addSubviews()
@@ -36,9 +50,20 @@ class InputCell: UITableViewCell {
         selectionStyle = .none
     }
     
-    func setUpCellWith(title: String, andPlaceholder: String) {
+    @objc func datePickerChanged(_ sender: UIDatePicker) {
+        textField.text = dateFormatter.string(from: sender.date)
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        endEditing(true)
+    }
+    
+    func setUpCellWith(title: String, placeholder: String, withDatePicker: Bool) {
         label.text = title
-        textField.placeholder = andPlaceholder
+        textField.placeholder = placeholder
+        if withDatePicker == true {
+            textField.inputView = datePicker
+        }
     }
     
     private func addSubviews() {
@@ -49,7 +74,7 @@ class InputCell: UITableViewCell {
     private func configConstraints() {
         NSLayoutConstraint.activate([
             label.centerYAnchor.constraint(equalTo: centerYAnchor),
-            label.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.2),
+            label.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.4),
             label.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
             label.trailingAnchor.constraint(equalTo: textField.leadingAnchor, constant: 0)
             ])
@@ -60,5 +85,4 @@ class InputCell: UITableViewCell {
             textField.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0)
             ])
     }
-
 }

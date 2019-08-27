@@ -11,7 +11,7 @@ import UIKit
 class ProductCell: UICollectionViewCell {
     lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 12)
+        label.font = UIFont.boldSystemFont(ofSize: 14)
         label.text = "Maionese"
         label.textColor = UIColor.AppColors.darkGray
         label.translatesAutoresizingMaskIntoConstraints = false

@@ -11,6 +11,8 @@ import UIKit
 class ModalViewController: UIViewController {
     weak var coordinator: MainCoordinator?
     
+    var centerXConstraint: NSLayoutConstraint?
+    
     lazy var modalView: ModalView = {
         let modalView = ModalView()
         modalView.translatesAutoresizingMaskIntoConstraints = false
@@ -39,6 +41,8 @@ class ModalViewController: UIViewController {
         super.viewDidLoad()
         configModalView()
         configButton()
+        addObservers()
+        hideKeyboardWhenTappedAround()
     }
     
     @objc func exitButtonTapped(_ sender: UIButton) {
@@ -70,7 +74,7 @@ class ModalViewController: UIViewController {
         
         NSLayoutConstraint.activate([
             modalView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
-            modalView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.4),
+            modalView.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.9),
             modalView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             modalView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
             ])
@@ -87,5 +91,42 @@ class ModalViewController: UIViewController {
             exitButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: leftConstant),
             exitButton.bottomAnchor.constraint(equalTo: modalView.topAnchor, constant: bottomConstant)
             ])
+    }
+}
+
+extension ModalViewController: UITextFieldDelegate {
+    //    Method called when the user click on Return button on keyboard
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    //    Add observers to notificated when keyboard will show + hide
+    private func addObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow),
+                                               name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide),
+                                               name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    //    Show keyboard + push to up texfield
+    @objc func keyboardWillShow(notification: NSNotification) {
+        var userInfo = notification.userInfo!
+        var keyboardFrame: CGRect = (userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as AnyObject).cgRectValue
+        keyboardFrame = view.convert(keyboardFrame, from: nil)
+        
+    }
+    //    Hide keydoard + push to down textfield
+    @objc func keyboardWillHide(notification: NSNotification) {
+        let contentInset: UIEdgeInsets = UIEdgeInsets.zero
+    }
+    //    Hide keyboard when touch up outside
+    private func hideKeyboardWhenTappedAround() {
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    //    Dismiss keyboard methods
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
 }

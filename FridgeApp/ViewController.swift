@@ -20,6 +20,7 @@ class ViewController: UIViewController {
         collectionView.dataSource = self
         collectionView.backgroundColor = .clear
         collectionView.alwaysBounceVertical = true
+        collectionView.showsVerticalScrollIndicator = false
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.register(ProductCell.self, forCellWithReuseIdentifier: "ProductCell")
         collectionView.register(SeparatorCell.self, forCellWithReuseIdentifier: "SeparatorCell")
@@ -72,16 +73,16 @@ class ViewController: UIViewController {
     
     private func configConstrints() {
         NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
+            collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: view.frame.width * 0.03),
             collectionView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            collectionView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.9),
-            collectionView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.86)
+            collectionView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.9)
             ])
         
         NSLayoutConstraint.activate([
-            redButton.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: view.frame.width * 0.05),
+            redButton.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: view.frame.width * 0.08),
+            redButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -view.frame.width * 0.08),
             redButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            redButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.9),
+            redButton.widthAnchor.constraint(equalToConstant: view.frame.width * 0.9 - 12),
             redButton.heightAnchor.constraint(equalTo: redButton.widthAnchor, multiplier: 0.15)
             ])
     }
@@ -104,5 +105,9 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 100, height: 90)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 10, left: 6, bottom: 10, right: 6)
     }
 }

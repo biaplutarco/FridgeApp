@@ -55,6 +55,17 @@ class ModalView: UIView {
         return tableView
     }()
     
+    lazy var redButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Colocar", for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = UIColor.AppColors.red
+        button.layer.cornerRadius = 10
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -71,6 +82,7 @@ class ModalView: UIView {
         addSubview(iconCollectionView)
         addSubview(colorCollectionView)
         addSubview(tableView)
+        addSubview(redButton)
     }
     
     private func configView() {
@@ -80,24 +92,32 @@ class ModalView: UIView {
     
     private func configConstraints() {
         NSLayoutConstraint.activate([
-            iconCollectionView.topAnchor.constraint(equalTo: topAnchor, constant: 12),
+            iconCollectionView.topAnchor.constraint(equalTo: topAnchor, constant: 6),
             iconCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12),
             iconCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12),
-            iconCollectionView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.2)
+            iconCollectionView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.25)
             ])
         
         NSLayoutConstraint.activate([
-            colorCollectionView.topAnchor.constraint(equalTo: iconCollectionView.bottomAnchor),
+            colorCollectionView.topAnchor.constraint(equalTo: iconCollectionView.bottomAnchor, constant: 6),
             colorCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12),
             colorCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12),
-            colorCollectionView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.1)
+            colorCollectionView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.15)
             ])
         
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: colorCollectionView.bottomAnchor, constant: 12),
+            tableView.topAnchor.constraint(equalTo: colorCollectionView.bottomAnchor, constant: 6),
             tableView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12),
             tableView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12),
-            tableView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.3)
+            tableView.heightAnchor.constraint(lessThanOrEqualTo: iconCollectionView.heightAnchor, multiplier: 1.6)
+            ])
+        
+        NSLayoutConstraint.activate([
+            redButton.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: 26),
+            redButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 22),
+            redButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -22),
+            redButton.heightAnchor.constraint(equalTo: colorCollectionView.heightAnchor, multiplier: 0.9),
+            redButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20)
             ])
     }
 }
@@ -135,14 +155,14 @@ extension ModalView: UICollectionViewDelegate, UICollectionViewDataSource, UICol
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        return UIEdgeInsets(top: 10, left: 16, bottom: 10, right: 16)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView.tag == 0 {
             return CGSize(width: iconCollectionView.frame.height/1.2, height: iconCollectionView.frame.height/1.2)
         } else {
-            return CGSize(width: colorCollectionView.frame.height/2, height: colorCollectionView.frame.height/2)
+            return CGSize(width: colorCollectionView.frame.height/1.6, height: colorCollectionView.frame.height/1.6)
         }
     }
 }
@@ -154,7 +174,11 @@ extension ModalView: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? InputCell else { return UITableViewCell() }
-        cell.setUpCellWith(title: "Title", andPlaceholder: "title")
+        cell.setUpCellWith(title: "Title", placeholder: "title", withDatePicker: false)
+        
+        if indexPath.row == 1 {
+            cell.setUpCellWith(title: "Expiry date", placeholder: "expiry date", withDatePicker: true)
+        }
         
         return cell
     }

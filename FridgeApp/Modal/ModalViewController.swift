@@ -11,7 +11,10 @@ import UIKit
 class ModalViewController: UIViewController {
     weak var coordinator: MainCoordinator?
     
-    var centerXConstraint: NSLayoutConstraint?
+    lazy var centerYConstraint: NSLayoutConstraint = {
+        let centerYConstraint = modalView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        return centerYConstraint
+    }()
     
     lazy var modalView: ModalView = {
         let modalView = ModalView()
@@ -73,10 +76,10 @@ class ModalViewController: UIViewController {
         view.addSubview(modalView)
         
         NSLayoutConstraint.activate([
+            centerYConstraint,
             modalView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
             modalView.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.9),
-            modalView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            modalView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+            modalView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
             ])
     }
     
@@ -113,6 +116,14 @@ extension ModalViewController: UITextFieldDelegate {
         var keyboardFrame: CGRect = (userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as AnyObject).cgRectValue
         keyboardFrame = view.convert(keyboardFrame, from: nil)
         
+        modalView.removeConstraint(centerYConstraint)
+        centerYConstraint.isActive = false
+        centerYConstraint = modalView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -(keyboardFrame.height/2))
+        centerYConstraint.isActive = true
+        
+        UIView.animate(withDuration: 1) {
+            self.view.layoutIfNeeded()
+        }
     }
     //    Hide keydoard + push to down textfield
     @objc func keyboardWillHide(notification: NSNotification) {
@@ -120,7 +131,6 @@ extension ModalViewController: UITextFieldDelegate {
     }
     //    Hide keyboard when touch up outside
     private func hideKeyboardWhenTappedAround() {
-        
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
@@ -128,5 +138,13 @@ extension ModalViewController: UITextFieldDelegate {
     //    Dismiss keyboard methods
     @objc func dismissKeyboard() {
         view.endEditing(true)
+        modalView.removeConstraint(centerYConstraint)
+        centerYConstraint.isActive = false
+        centerYConstraint = modalView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        centerYConstraint.isActive = true
+        
+        UIView.animate(withDuration: 0.5) {
+            self.view.layoutIfNeeded()
+        }
     }
 }

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A43957DE2315C7A100876805 /* IconList.plist in Resources */ = {isa = PBXBuildFile; fileRef = A43957DD2315C7A100876805 /* IconList.plist */; };
+		A43957E12315C91600876805 /* PListData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43957E02315C91600876805 /* PListData.swift */; };
 		A4570013231067D9000E9500 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4570012231067D9000E9500 /* AppDelegate.swift */; };
 		A4570015231067D9000E9500 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4570014231067D9000E9500 /* ViewController.swift */; };
 		A457001B231067D9000E9500 /* FridgeApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A4570019231067D9000E9500 /* FridgeApp.xcdatamodeld */; };
@@ -45,6 +47,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A43957DD2315C7A100876805 /* IconList.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = IconList.plist; sourceTree = "<group>"; };
+		A43957E02315C91600876805 /* PListData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PListData.swift; sourceTree = "<group>"; };
 		A457000F231067D9000E9500 /* FridgeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FridgeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4570012231067D9000E9500 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A4570014231067D9000E9500 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -96,6 +100,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A43957DF2315C8F800876805 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A43957E02315C91600876805 /* PListData.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		A4570006231067D9000E9500 = {
 			isa = PBXGroup;
 			children = (
@@ -124,6 +136,7 @@
 				A457004D231170C1000E9500 /* UIColors+AppColors.swift */,
 				A457005D2311F7E4000E9500 /* CoreDataManager.swift */,
 				A4570014231067D9000E9500 /* ViewController.swift */,
+				A43957DF2315C8F800876805 /* Model */,
 				A457006523120CA5000E9500 /* Modal */,
 				A457005C2311F742000E9500 /* Cell */,
 				A457001C231067DB000E9500 /* Assets.xcassets */,
@@ -178,6 +191,7 @@
 			children = (
 				A457006323120C02000E9500 /* ModalView.swift */,
 				A457005F2311FE10000E9500 /* ModalViewController.swift */,
+				A43957DD2315C7A100876805 /* IconList.plist */,
 			);
 			path = Modal;
 			sourceTree = "<group>";
@@ -287,6 +301,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A43957DE2315C7A100876805 /* IconList.plist in Resources */,
 				A4570020231067DB000E9500 /* LaunchScreen.storyboard in Resources */,
 				A457001D231067DB000E9500 /* Assets.xcassets in Resources */,
 			);
@@ -340,6 +355,7 @@
 				A4570013231067D9000E9500 /* AppDelegate.swift in Sources */,
 				A45700602311FE10000E9500 /* ModalViewController.swift in Sources */,
 				A4CC7DFA2314387600D16D82 /* InputCell.swift in Sources */,
+				A43957E12315C91600876805 /* PListData.swift in Sources */,
 				A457006423120C02000E9500 /* ModalView.swift in Sources */,
 				A457001B231067D9000E9500 /* FridgeApp.xcdatamodeld in Sources */,
 				A457005223118DED000E9500 /* ProductCell.swift in Sources */,

@@ -127,7 +127,7 @@ extension ModalViewController: UITextFieldDelegate {
     }
     //    Hide keydoard + push to down textfield
     @objc func keyboardWillHide(notification: NSNotification) {
-        let contentInset: UIEdgeInsets = UIEdgeInsets.zero
+//        let contentInset: UIEdgeInsets = UIEdgeInsets.zero
     }
     //    Hide keyboard when touch up outside
     private func hideKeyboardWhenTappedAround() {

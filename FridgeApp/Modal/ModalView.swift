@@ -9,6 +9,11 @@
 import UIKit
 
 class ModalView: UIView {
+    lazy var icons: [String] = {
+        let icons = PListData.readPropertyList(resource: "IconList")
+        return icons
+    }()
+    
     lazy var iconCollectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .horizontal
@@ -18,6 +23,7 @@ class ModalView: UIView {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.backgroundColor = .clear
         collectionView.alwaysBounceHorizontal = true
+        collectionView.showsHorizontalScrollIndicator = false
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.tag = 0
@@ -35,6 +41,8 @@ class ModalView: UIView {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.backgroundColor = .clear
         collectionView.alwaysBounceHorizontal = true
+        collectionView.showsHorizontalScrollIndicator = false
+
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.tag = 1
@@ -124,13 +132,17 @@ class ModalView: UIView {
 
 extension ModalView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        if collectionView.tag == 0 {
+            return icons.count
+        } else {
+            return 3
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView.tag == 0 {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "IconCell", for: indexPath) as? IconCell else { return UICollectionViewCell() }
-            cell.setUpCellWith(image: #imageLiteral(resourceName: "Meat"))
+            cell.setUpCellWith(image: UIImage.init(named: icons[indexPath.row])!)
             
             return cell
         } else {

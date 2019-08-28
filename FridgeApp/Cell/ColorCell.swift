@@ -9,6 +9,12 @@
 import UIKit
 
 class ColorCell: UICollectionViewCell {
+    override var isSelected: Bool {
+        didSet {
+            cellDidSelected()
+        }
+    }
+    
     lazy var colorView: UIView = {
         let colorView = UIView()
         colorView.layer.cornerRadius = frame.height/2
@@ -29,10 +35,19 @@ class ColorCell: UICollectionViewCell {
     
     func setUpCellWith(color: UIColor) {
         colorView.backgroundColor = color
+        isSelected = false
     }
     
     private func addSubviews() {
         addSubview(colorView)
+    }
+    
+    private func cellDidSelected() {
+        if isSelected == true {
+            layer.opacity = 0.8
+        } else {
+            layer.opacity = 0.3
+        }
     }
     
     private func configConstraints() {

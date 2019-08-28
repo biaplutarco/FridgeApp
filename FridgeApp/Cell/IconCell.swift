@@ -15,6 +15,11 @@ class IconCell: UICollectionViewCell {
         }
     }
     
+    lazy var selectedColor: UIColor = {
+        let color = UIColor()
+        return color
+    }()
+    
     lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = UIView.ContentMode.scaleAspectFit
@@ -34,8 +39,9 @@ class IconCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setUpCellWith(image: UIImage) {
+    func setUpCellWith(image: UIImage, andSelectedColor: UIColor) {
         imageView.image = image
+        selectedColor = andSelectedColor
     }
     
     private func addSubviews() {
@@ -44,7 +50,7 @@ class IconCell: UICollectionViewCell {
     
     private func cellDidSelected() {
         if isSelected == true {
-            imageView.tintColor = UIColor.AppColors.red
+            imageView.tintColor = selectedColor
         } else {
             imageView.tintColor = UIColor.lightGray
         }

@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A43957DE2315C7A100876805 /* IconList.plist in Resources */ = {isa = PBXBuildFile; fileRef = A43957DD2315C7A100876805 /* IconList.plist */; };
+		A43957DE2315C7A100876805 /* IconPList.plist in Resources */ = {isa = PBXBuildFile; fileRef = A43957DD2315C7A100876805 /* IconPList.plist */; };
 		A43957E12315C91600876805 /* PListData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43957E02315C91600876805 /* PListData.swift */; };
+		A43957E52315EF3E00876805 /* ColorPList.plist in Resources */ = {isa = PBXBuildFile; fileRef = A43957E42315EF3E00876805 /* ColorPList.plist */; };
 		A4570013231067D9000E9500 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4570012231067D9000E9500 /* AppDelegate.swift */; };
 		A4570015231067D9000E9500 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4570014231067D9000E9500 /* ViewController.swift */; };
 		A457001B231067D9000E9500 /* FridgeApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A4570019231067D9000E9500 /* FridgeApp.xcdatamodeld */; };
@@ -47,8 +48,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		A43957DD2315C7A100876805 /* IconList.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = IconList.plist; sourceTree = "<group>"; };
+		A43957DD2315C7A100876805 /* IconPList.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = IconPList.plist; sourceTree = "<group>"; };
 		A43957E02315C91600876805 /* PListData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PListData.swift; sourceTree = "<group>"; };
+		A43957E42315EF3E00876805 /* ColorPList.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ColorPList.plist; sourceTree = "<group>"; };
 		A457000F231067D9000E9500 /* FridgeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FridgeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4570012231067D9000E9500 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A4570014231067D9000E9500 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -104,6 +106,8 @@
 			isa = PBXGroup;
 			children = (
 				A43957E02315C91600876805 /* PListData.swift */,
+				A43957DD2315C7A100876805 /* IconPList.plist */,
+				A43957E42315EF3E00876805 /* ColorPList.plist */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -191,7 +195,6 @@
 			children = (
 				A457006323120C02000E9500 /* ModalView.swift */,
 				A457005F2311FE10000E9500 /* ModalViewController.swift */,
-				A43957DD2315C7A100876805 /* IconList.plist */,
 			);
 			path = Modal;
 			sourceTree = "<group>";
@@ -301,7 +304,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A43957DE2315C7A100876805 /* IconList.plist in Resources */,
+				A43957DE2315C7A100876805 /* IconPList.plist in Resources */,
+				A43957E52315EF3E00876805 /* ColorPList.plist in Resources */,
 				A4570020231067DB000E9500 /* LaunchScreen.storyboard in Resources */,
 				A457001D231067DB000E9500 /* Assets.xcassets in Resources */,
 			);

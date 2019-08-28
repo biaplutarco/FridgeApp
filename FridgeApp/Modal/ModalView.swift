@@ -10,8 +10,23 @@ import UIKit
 
 class ModalView: UIView {
     lazy var icons: [String] = {
-        let icons = PListData.readPropertyList(resource: "IconList")
+        let icons = PListData.readPropertyList(resource: "IconPList")
         return icons
+    }()
+    
+    lazy var colors: [String] = {
+        let colors = PListData.readPropertyList(resource: "ColorPList")
+        return colors
+    }()
+    
+    lazy var selectedColor: UIColor = {
+        guard let color = UIColor.AppColors.red else { return UIColor() }
+        return color
+    }()
+    
+    lazy var lastIconIndexPath: IndexPath = {
+        let indexPath = IndexPath()
+        return indexPath
     }()
     
     lazy var iconCollectionView: UICollectionView = {
@@ -26,7 +41,6 @@ class ModalView: UIView {
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.tag = 0
         collectionView.register(IconCell.self, forCellWithReuseIdentifier: "IconCell")
         
         return collectionView
@@ -40,12 +54,10 @@ class ModalView: UIView {
         let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: flowLayout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.backgroundColor = .clear
-        collectionView.alwaysBounceHorizontal = true
-        collectionView.showsHorizontalScrollIndicator = false
-
+        collectionView.isScrollEnabled = false
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.tag = 1
+        collectionView.contentMode = UIView.ContentMode.center
         collectionView.register(ColorCell.self, forCellWithReuseIdentifier: "ColorCell")
         
         return collectionView
@@ -107,24 +119,23 @@ class ModalView: UIView {
             ])
         
         NSLayoutConstraint.activate([
-            colorCollectionView.topAnchor.constraint(equalTo: iconCollectionView.bottomAnchor, constant: 6),
-            colorCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12),
-            colorCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12),
-            colorCollectionView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.15)
+            colorCollectionView.topAnchor.constraint(equalTo: iconCollectionView.bottomAnchor),
+            colorCollectionView.heightAnchor.constraint(equalTo: widthAnchor, multiplier: 0.2),
+            colorCollectionView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            colorCollectionView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.9)
             ])
         
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: colorCollectionView.bottomAnchor, constant: 6),
+            tableView.topAnchor.constraint(equalTo: colorCollectionView.bottomAnchor),
             tableView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12),
             tableView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12),
-            tableView.heightAnchor.constraint(lessThanOrEqualTo: iconCollectionView.heightAnchor, multiplier: 1.6)
+            tableView.heightAnchor.constraint(equalTo: iconCollectionView.heightAnchor, multiplier: 1.2)
             ])
         
         NSLayoutConstraint.activate([
-            redButton.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: 26),
             redButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 22),
             redButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -22),
-            redButton.heightAnchor.constraint(equalTo: colorCollectionView.heightAnchor, multiplier: 0.9),
+            redButton.heightAnchor.constraint(equalTo: iconCollectionView.heightAnchor, multiplier: 0.5),
             redButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20)
             ])
     }
@@ -132,33 +143,45 @@ class ModalView: UIView {
 
 extension ModalView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if collectionView.tag == 0 {
+        if collectionView === iconCollectionView {
             return icons.count
         } else {
-            return 3
+            return colors.count
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if collectionView.tag == 0 {
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "IconCell", for: indexPath) as? IconCell else { return UICollectionViewCell() }
-            cell.setUpCellWith(image: UIImage.init(named: icons[indexPath.row])!)
+        if collectionView === iconCollectionView {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "IconCell", for: indexPath) as? IconCell,
+                  let icon = UIImage.init(named: icons[indexPath.row]) else { return UICollectionViewCell() }
+            cell.setUpCellWith(image: icon, andSelectedColor: selectedColor)
             
             return cell
         } else {
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ColorCell", for: indexPath) as? ColorCell else { return UICollectionViewCell() }
-            cell.setUpCellWith(color: UIColor.AppColors.red!)
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ColorCell", for: indexPath) as? ColorCell,
+                  let color = UIColor.init(named: colors[indexPath.row]) else { return UICollectionViewCell() }
+            cell.setUpCellWith(color: color)
             
             return cell
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
-        if collectionView.tag == 0 {
-            collectionView.cellForItem(at: indexPath)?.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
+        if collectionView === iconCollectionView {
+            guard let iconCell = collectionView.cellForItem(at: indexPath) as? IconCell else { return }
+            
+            collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+            iconCell.imageView.tintColor = selectedColor
+            iconCell.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
+            lastIconIndexPath = indexPath
         } else {
-            collectionView.cellForItem(at: indexPath)?.transform = CGAffineTransform(scaleX: 1.4, y: 1.4)
+            guard let colorCell = collectionView.cellForItem(at: indexPath) as? ColorCell,
+                  let iconCell = iconCollectionView.cellForItem(at: lastIconIndexPath) as? IconCell,
+                  let color = colorCell.colorView.backgroundColor else { return }
+            
+            colorCell.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
+            selectedColor = color
+            iconCell.imageView.tintColor = selectedColor
         }
     }
     
@@ -167,14 +190,16 @@ extension ModalView: UICollectionViewDelegate, UICollectionViewDataSource, UICol
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 10, left: 16, bottom: 10, right: 16)
+        return UIEdgeInsets(top: 6, left: 6, bottom: 6, right: 6)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if collectionView.tag == 0 {
-            return CGSize(width: iconCollectionView.frame.height/1.2, height: iconCollectionView.frame.height/1.2)
+        let insets = CGFloat(32)
+        
+        if collectionView === iconCollectionView {
+            return CGSize(width: iconCollectionView.frame.height/1.2 - insets, height: iconCollectionView.frame.height/1.2 - insets)
         } else {
-            return CGSize(width: colorCollectionView.frame.height/1.6, height: colorCollectionView.frame.height/1.6)
+            return CGSize(width: colorCollectionView.frame.height - insets, height: colorCollectionView.frame.height - insets)
         }
     }
 }

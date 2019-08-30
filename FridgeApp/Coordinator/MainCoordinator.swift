@@ -11,6 +11,8 @@ import UIKit
 class MainCoordinator: Coordinator {
     var childCoordinators = [Coordinator]()
     var navigationController: UINavigationController
+    let viewController = ViewController()
+    let modalViewController = ModalViewController()
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
@@ -26,18 +28,27 @@ class MainCoordinator: Coordinator {
     }
     
     func start() {
-        let vc = ViewController()
-        vc.coordinator = self
-        vc.title = "Sua Geladeira"
-        navigationController.pushViewController(vc, animated: false)
+//        let vc = ViewController()
+        viewController.coordinator = self
+        viewController.title = "Sua Geladeira"
+        navigationController.pushViewController(viewController, animated: false)
     }
     
-    func addProduct(image: UIImage) {
-        let vc = ModalViewController()
-        vc.coordinator = self
-        navigationController.present(vc, animated: true) {
-            vc.setUpModelView(image: image)
-            vc.configBackgroundImageView()
+    func goToModalVC(snapShot: UIImage) {
+//        let vc = ModalViewController()
+        modalViewController.coordinator = self
+        navigationController.present(modalViewController, animated: true) {
+            self.modalViewController.setUpModelView(image: snapShot)
+            self.modalViewController.configBackgroundImageView()
+        }
+    }
+    
+    func dissmissModalViewController() {
+        modalViewController.dismiss(animated: true) {
+            let indexPath = IndexPath(item: 0, section: 0)
+            self.viewController.products = Product.all()
+            self.viewController.collectionView.insertItems(at: [indexPath])
+            self.viewController.collectionView.reloadItems(at: [indexPath])
         }
     }
 }

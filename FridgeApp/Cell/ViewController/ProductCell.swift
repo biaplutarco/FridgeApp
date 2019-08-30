@@ -12,7 +12,6 @@ class ProductCell: UICollectionViewCell {
     lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 14)
-        label.text = "Maionese"
         label.textColor = UIColor.AppColors.darkGray
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -21,7 +20,6 @@ class ProductCell: UICollectionViewCell {
     lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = #imageLiteral(resourceName: "CutMilk")
-        imageView.tintColor = UIColor.AppColors.red
         imageView.layer.opacity = 0.08
         imageView.layer.cornerRadius = 10
         imageView.layer.maskedCorners = [.layerMinXMaxYCorner]
@@ -33,7 +31,6 @@ class ProductCell: UICollectionViewCell {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 18)
         label.textColor = UIColor.AppColors.darkGray
-        label.text = "12 dias"
         label.textAlignment = .right
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -60,9 +57,14 @@ class ProductCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setUpCell(title: String, image: UIImage) {
+    func setUpCell(title: String, imageName: String, colorName: String, days: String) {
+        let image = UIImage.init(named: imageName)
+        let color = UIColor.init(named: colorName)
+        
         titleLabel.text = title
         imageView.image = image
+        daysLabel.text = days
+        imageView.tintColor = color
     }
     
     private func addSubviews() {

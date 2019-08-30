@@ -22,9 +22,19 @@
 		A457004E231170C1000E9500 /* UIColors+AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A457004D231170C1000E9500 /* UIColors+AppColors.swift */; };
 		A457005223118DED000E9500 /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A457005123118DED000E9500 /* ProductCell.swift */; };
 		A45700582311BDA8000E9500 /* SeparatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45700572311BDA8000E9500 /* SeparatorCell.swift */; };
-		A457005E2311F7E4000E9500 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A457005D2311F7E4000E9500 /* CoreDataManager.swift */; };
 		A45700602311FE10000E9500 /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A457005F2311FE10000E9500 /* ModalViewController.swift */; };
 		A457006423120C02000E9500 /* ModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A457006323120C02000E9500 /* ModalView.swift */; };
+		A483B5652316E6AA00862628 /* ModalCollectionFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A483B5642316E6AA00862628 /* ModalCollectionFlowLayout.swift */; };
+		A483B5672316E7C900862628 /* TextRedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A483B5662316E7C900862628 /* TextRedButton.swift */; };
+		A483B56E2316FB3100862628 /* Writeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A483B56D2316FB3100862628 /* Writeable.swift */; };
+		A483B5702316FB7600862628 /* Deletable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A483B56F2316FB7600862628 /* Deletable.swift */; };
+		A483B5722316FBA100862628 /* Readeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A483B5712316FBA100862628 /* Readeable.swift */; };
+		A483B5742316FD8E00862628 /* ActiveRecordType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A483B5732316FD8E00862628 /* ActiveRecordType.swift */; };
+		A483B5762316FDC300862628 /* ModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A483B5752316FDC300862628 /* ModelType.swift */; };
+		A483B58423183C6300862628 /* CoreDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A483B58323183C6300862628 /* CoreDataModel.swift */; };
+		A483B586231887FD00862628 /* NSManagedObject+className.swift in Sources */ = {isa = PBXBuildFile; fileRef = A483B585231887FD00862628 /* NSManagedObject+className.swift */; };
+		A483B5892318914500862628 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = A483B5882318914500862628 /* Product.swift */; };
+		A483B58F2318A45300862628 /* ModalViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A483B58E2318A45300862628 /* ModalViewDelegate.swift */; };
 		A4C6B9DF2312F47700BD5150 /* IconCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C6B9DE2312F47700BD5150 /* IconCell.swift */; };
 		A4C6B9E123130B9400BD5150 /* ColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C6B9E023130B9400BD5150 /* ColorCell.swift */; };
 		A4CC7DFA2314387600D16D82 /* InputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CC7DF92314387600D16D82 /* InputCell.swift */; };
@@ -69,9 +79,19 @@
 		A457004D231170C1000E9500 /* UIColors+AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColors+AppColors.swift"; sourceTree = "<group>"; };
 		A457005123118DED000E9500 /* ProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
 		A45700572311BDA8000E9500 /* SeparatorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatorCell.swift; sourceTree = "<group>"; };
-		A457005D2311F7E4000E9500 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		A457005F2311FE10000E9500 /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
 		A457006323120C02000E9500 /* ModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalView.swift; sourceTree = "<group>"; };
+		A483B5642316E6AA00862628 /* ModalCollectionFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalCollectionFlowLayout.swift; sourceTree = "<group>"; };
+		A483B5662316E7C900862628 /* TextRedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextRedButton.swift; sourceTree = "<group>"; };
+		A483B56D2316FB3100862628 /* Writeable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Writeable.swift; sourceTree = "<group>"; };
+		A483B56F2316FB7600862628 /* Deletable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deletable.swift; sourceTree = "<group>"; };
+		A483B5712316FBA100862628 /* Readeable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Readeable.swift; sourceTree = "<group>"; };
+		A483B5732316FD8E00862628 /* ActiveRecordType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveRecordType.swift; sourceTree = "<group>"; };
+		A483B5752316FDC300862628 /* ModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelType.swift; sourceTree = "<group>"; };
+		A483B58323183C6300862628 /* CoreDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataModel.swift; sourceTree = "<group>"; };
+		A483B585231887FD00862628 /* NSManagedObject+className.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObject+className.swift"; sourceTree = "<group>"; };
+		A483B5882318914500862628 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		A483B58E2318A45300862628 /* ModalViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewDelegate.swift; sourceTree = "<group>"; };
 		A4C6B9DE2312F47700BD5150 /* IconCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconCell.swift; sourceTree = "<group>"; };
 		A4C6B9E023130B9400BD5150 /* ColorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCell.swift; sourceTree = "<group>"; };
 		A4CC7DF92314387600D16D82 /* InputCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputCell.swift; sourceTree = "<group>"; };
@@ -102,14 +122,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		A43957DF2315C8F800876805 /* Model */ = {
+		A43957DF2315C8F800876805 /* PList */ = {
 			isa = PBXGroup;
 			children = (
 				A43957E02315C91600876805 /* PListData.swift */,
 				A43957DD2315C7A100876805 /* IconPList.plist */,
 				A43957E42315EF3E00876805 /* ColorPList.plist */,
 			);
-			path = Model;
+			path = PList;
 			sourceTree = "<group>";
 		};
 		A4570006231067D9000E9500 = {
@@ -135,13 +155,14 @@
 		A4570011231067D9000E9500 /* FridgeApp */ = {
 			isa = PBXGroup;
 			children = (
-				A457005B2311F6DE000E9500 /* Coordinator */,
 				A4570012231067D9000E9500 /* AppDelegate.swift */,
-				A457004D231170C1000E9500 /* UIColors+AppColors.swift */,
-				A457005D2311F7E4000E9500 /* CoreDataManager.swift */,
-				A4570014231067D9000E9500 /* ViewController.swift */,
-				A43957DF2315C8F800876805 /* Model */,
-				A457006523120CA5000E9500 /* Modal */,
+				A483B58B2318939B00862628 /* Utils */,
+				A457005B2311F6DE000E9500 /* Coordinator */,
+				A483B56C2316FB1E00862628 /* Active Record */,
+				A483B5872318912000862628 /* CoreData */,
+				A43957DF2315C8F800876805 /* PList */,
+				A483B58A2318937800862628 /* View Controller */,
+				A457006523120CA5000E9500 /* View */,
 				A457005C2311F742000E9500 /* Cell */,
 				A457001C231067DB000E9500 /* Assets.xcassets */,
 				A457001E231067DB000E9500 /* LaunchScreen.storyboard */,
@@ -181,22 +202,79 @@
 		A457005C2311F742000E9500 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				A457005123118DED000E9500 /* ProductCell.swift */,
-				A45700572311BDA8000E9500 /* SeparatorCell.swift */,
-				A4C6B9DE2312F47700BD5150 /* IconCell.swift */,
-				A4C6B9E023130B9400BD5150 /* ColorCell.swift */,
-				A4CC7DF92314387600D16D82 /* InputCell.swift */,
+				A483B58D231893D800862628 /* ModalViewController */,
+				A483B58C231893C100862628 /* ViewController */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
 		};
-		A457006523120CA5000E9500 /* Modal */ = {
+		A457006523120CA5000E9500 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				A457006323120C02000E9500 /* ModalView.swift */,
+				A483B58E2318A45300862628 /* ModalViewDelegate.swift */,
+				A483B5662316E7C900862628 /* TextRedButton.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A483B56C2316FB1E00862628 /* Active Record */ = {
+			isa = PBXGroup;
+			children = (
+				A483B56D2316FB3100862628 /* Writeable.swift */,
+				A483B56F2316FB7600862628 /* Deletable.swift */,
+				A483B5712316FBA100862628 /* Readeable.swift */,
+				A483B5732316FD8E00862628 /* ActiveRecordType.swift */,
+				A483B5752316FDC300862628 /* ModelType.swift */,
+			);
+			path = "Active Record";
+			sourceTree = "<group>";
+		};
+		A483B5872318912000862628 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				A483B58323183C6300862628 /* CoreDataModel.swift */,
+				A483B585231887FD00862628 /* NSManagedObject+className.swift */,
+				A483B5882318914500862628 /* Product.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		A483B58A2318937800862628 /* View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A4570014231067D9000E9500 /* ViewController.swift */,
 				A457005F2311FE10000E9500 /* ModalViewController.swift */,
 			);
-			path = Modal;
+			path = "View Controller";
+			sourceTree = "<group>";
+		};
+		A483B58B2318939B00862628 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				A457004D231170C1000E9500 /* UIColors+AppColors.swift */,
+				A483B5642316E6AA00862628 /* ModalCollectionFlowLayout.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		A483B58C231893C100862628 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A457005123118DED000E9500 /* ProductCell.swift */,
+				A45700572311BDA8000E9500 /* SeparatorCell.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		A483B58D231893D800862628 /* ModalViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A4C6B9DE2312F47700BD5150 /* IconCell.swift */,
+				A4C6B9E023130B9400BD5150 /* ColorCell.swift */,
+				A4CC7DF92314387600D16D82 /* InputCell.swift */,
+			);
+			path = ModalViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -353,17 +431,27 @@
 			buildActionMask = 2147483647;
 			files = (
 				A457004A23116896000E9500 /* Coordinator.swift in Sources */,
+				A483B586231887FD00862628 /* NSManagedObject+className.swift in Sources */,
 				A4570015231067D9000E9500 /* ViewController.swift in Sources */,
+				A483B58F2318A45300862628 /* ModalViewDelegate.swift in Sources */,
+				A483B5702316FB7600862628 /* Deletable.swift in Sources */,
+				A483B5652316E6AA00862628 /* ModalCollectionFlowLayout.swift in Sources */,
 				A4C6B9DF2312F47700BD5150 /* IconCell.swift in Sources */,
 				A457004C23116A36000E9500 /* MainCoordinator.swift in Sources */,
+				A483B5892318914500862628 /* Product.swift in Sources */,
+				A483B5672316E7C900862628 /* TextRedButton.swift in Sources */,
+				A483B5722316FBA100862628 /* Readeable.swift in Sources */,
+				A483B58423183C6300862628 /* CoreDataModel.swift in Sources */,
 				A4570013231067D9000E9500 /* AppDelegate.swift in Sources */,
+				A483B56E2316FB3100862628 /* Writeable.swift in Sources */,
 				A45700602311FE10000E9500 /* ModalViewController.swift in Sources */,
 				A4CC7DFA2314387600D16D82 /* InputCell.swift in Sources */,
 				A43957E12315C91600876805 /* PListData.swift in Sources */,
 				A457006423120C02000E9500 /* ModalView.swift in Sources */,
 				A457001B231067D9000E9500 /* FridgeApp.xcdatamodeld in Sources */,
+				A483B5742316FD8E00862628 /* ActiveRecordType.swift in Sources */,
 				A457005223118DED000E9500 /* ProductCell.swift in Sources */,
-				A457005E2311F7E4000E9500 /* CoreDataManager.swift in Sources */,
+				A483B5762316FDC300862628 /* ModelType.swift in Sources */,
 				A457004E231170C1000E9500 /* UIColors+AppColors.swift in Sources */,
 				A4C6B9E123130B9400BD5150 /* ColorCell.swift in Sources */,
 				A45700582311BDA8000E9500 /* SeparatorCell.swift in Sources */,

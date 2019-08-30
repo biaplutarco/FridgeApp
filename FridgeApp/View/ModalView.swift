@@ -9,6 +9,8 @@
 import UIKit
 
 class ModalView: UIView {
+    weak var delegate: ModalViewDelegate?
+    
     lazy var icons: [String] = {
         let icons = PListData.readPropertyList(resource: "IconPList")
         return icons
@@ -19,9 +21,9 @@ class ModalView: UIView {
         return colors
     }()
     
-    lazy var selectedColor: UIColor = {
-        guard let color = UIColor.AppColors.red else { return UIColor() }
-        return color
+    lazy var selectedColorName: String = {
+        let colorName = "Red"
+        return colorName
     }()
     
     lazy var lastIconIndexPath: IndexPath = {
@@ -29,12 +31,18 @@ class ModalView: UIView {
         return indexPath
     }()
     
+    lazy var productTitle: String = {
+        let title = "Title"
+        return title
+    }()
+    
+    lazy var productDays: String = {
+        let days = "expiry date"
+        return days
+    }()
+    
     lazy var iconCollectionView: UICollectionView = {
-        let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.scrollDirection = .horizontal
-        flowLayout.minimumLineSpacing = 16
-        
-        let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: flowLayout)
+        let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: ModalCollectionFlowLayout())
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.backgroundColor = .clear
         collectionView.alwaysBounceHorizontal = true
@@ -47,17 +55,12 @@ class ModalView: UIView {
     }()
     
     lazy var colorCollectionView: UICollectionView = {
-        let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.scrollDirection = .horizontal
-        flowLayout.minimumLineSpacing = 16
-        
-        let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: flowLayout)
+        let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: ModalCollectionFlowLayout())
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.backgroundColor = .clear
         collectionView.isScrollEnabled = false
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.contentMode = UIView.ContentMode.center
         collectionView.register(ColorCell.self, forCellWithReuseIdentifier: "ColorCell")
         
         return collectionView
@@ -68,21 +71,18 @@ class ModalView: UIView {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.bounces = false
+        tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.separatorInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         tableView.register(InputCell.self, forCellReuseIdentifier: "Cell")
-        tableView.translatesAutoresizingMaskIntoConstraints = false
         
         return tableView
     }()
     
-    lazy var redButton: UIButton = {
-        let button = UIButton()
+    lazy var redButton: TextRedButton = {
+        let button = TextRedButton()
         button.setTitle("Colocar", for: .normal)
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
-        button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = UIColor.AppColors.red
-        button.layer.cornerRadius = 10
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(addProduct(_:)), for: .touchUpInside)
         return button
     }()
     
@@ -108,6 +108,17 @@ class ModalView: UIView {
     private func configView() {
         backgroundColor = .white
         layer.cornerRadius = 10
+    }
+    
+    @objc func addProduct(_ sender: UIButton) {
+        let iconName = icons[lastIconIndexPath.row]
+        print("colocar um alert aqui pra pessoa nao poder passar sem colocar imagem e cor")
+        print("red button tapped")
+        delegate?.saveProductWith(title: productTitle, expiryDate: productDays, colorName: selectedColorName, andIconName: iconName)
+        print(productDays)
+        print(productTitle)
+        print(selectedColorName)
+        print(iconName)
     }
     
     private func configConstraints() {
@@ -152,9 +163,10 @@ extension ModalView: UICollectionViewDelegate, UICollectionViewDataSource, UICol
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView === iconCollectionView {
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "IconCell", for: indexPath) as? IconCell,
+            guard let color = UIColor.init(named: selectedColorName),
+                  let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "IconCell", for: indexPath) as? IconCell,
                   let icon = UIImage.init(named: icons[indexPath.row]) else { return UICollectionViewCell() }
-            cell.setUpCellWith(image: icon, andSelectedColor: selectedColor)
+            cell.setUpCellWith(image: icon, andSelectedColor: color)
             
             return cell
         } else {
@@ -167,21 +179,20 @@ extension ModalView: UICollectionViewDelegate, UICollectionViewDataSource, UICol
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.cellForItem(at: indexPath)?.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
+        
         if collectionView === iconCollectionView {
-            guard let iconCell = collectionView.cellForItem(at: indexPath) as? IconCell else { return }
-            
+            guard let iconCell = iconCollectionView.cellForItem(at: indexPath) as? IconCell,
+                  let color = UIColor.init(named: selectedColorName) else { return }
+            iconCell.imageView.tintColor = color
             collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
-            iconCell.imageView.tintColor = selectedColor
-            iconCell.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
             lastIconIndexPath = indexPath
         } else {
-            guard let colorCell = collectionView.cellForItem(at: indexPath) as? ColorCell,
-                  let iconCell = iconCollectionView.cellForItem(at: lastIconIndexPath) as? IconCell,
-                  let color = colorCell.colorView.backgroundColor else { return }
-            
-            colorCell.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
-            selectedColor = color
-            iconCell.imageView.tintColor = selectedColor
+            guard let iconCell = iconCollectionView.cellForItem(at: lastIconIndexPath) as? IconCell,
+                  let color = UIColor.init(named: colors[indexPath.row]) else { return }
+
+            iconCell.imageView.tintColor = color
+            selectedColorName = colors[indexPath.row]
         }
     }
     
@@ -189,17 +200,15 @@ extension ModalView: UICollectionViewDelegate, UICollectionViewDataSource, UICol
         collectionView.cellForItem(at: indexPath)?.transform = CGAffineTransform.identity
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 6, left: 6, bottom: 6, right: 6)
-    }
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let insets = CGFloat(32)
+        let iconHeight = iconCollectionView.frame.height/1.2 - insets
+        let colorHeight = colorCollectionView.frame.height - insets
         
         if collectionView === iconCollectionView {
-            return CGSize(width: iconCollectionView.frame.height/1.2 - insets, height: iconCollectionView.frame.height/1.2 - insets)
+            return CGSize(width: iconHeight, height: iconHeight)
         } else {
-            return CGSize(width: colorCollectionView.frame.height - insets, height: colorCollectionView.frame.height - insets)
+            return CGSize(width: colorHeight, height: colorHeight)
         }
     }
 }
@@ -218,6 +227,17 @@ extension ModalView: UITableViewDelegate, UITableViewDataSource {
         }
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let cell = tableView.cellForRow(at: indexPath) as? InputCell else { return }
+        if indexPath.row == 1 {
+            guard let text = cell.textField.text else { return }
+            productDays = text
+        } else {
+            guard let text = cell.textField.text else { return }
+            productTitle = text
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

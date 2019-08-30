@@ -12,6 +12,11 @@ import CoreData
 class ViewController: UIViewController {
     weak var coordinator: MainCoordinator?
     
+    lazy var products: [Product] = {
+        let products = Product.all()
+        return products
+    }()
+    
     lazy var collectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.minimumLineSpacing = 24
@@ -27,13 +32,9 @@ class ViewController: UIViewController {
         return collectionView
     }()
     
-    lazy var redButton: UIButton = {
-        let button = UIButton()
+    lazy var redButton: TextRedButton = {
+        let button = TextRedButton()
         button.setTitle("Colocar na geladeira", for: .normal)
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
-        button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = UIColor.AppColors.red
-        button.layer.cornerRadius = 10
         button.addTarget(self, action: #selector(goToModal(_:)), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -50,6 +51,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.AppColors.lightGray
+        
+        products.forEach { $0.destroy() }
+
         addSubviews()
         configConstrints()
     }
@@ -60,7 +64,7 @@ class ViewController: UIViewController {
     
     @objc func goToModal(_ sender: UIButton) {
         navigationController?.view.addSubview(blurredView)
-        coordinator?.addProduct(image: screenShotMethod())
+        coordinator?.goToModalVC(snapShot: screenShotMethod())
     }
     
     func screenShotMethod() -> UIImage {
@@ -95,11 +99,17 @@ class ViewController: UIViewController {
 
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 16 //tem que somar pra poder sempre tem a barrinha nos 3 primeiros
+        return products.count //tem que somar pra poder sempre tem a barrinha nos 3 primeiros
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProductCell", for: indexPath) as? ProductCell else { return UICollectionViewCell() }
+        
+        let product = products[indexPath.row]
+        guard let title = product.title, let imageName = product.cutImage,
+            let colorName = product.color, let days = product.days else { return UICollectionViewCell() }
+            cell.setUpCell(title: title, imageName: imageName, colorName: colorName, days: days)
+        
         return cell
     }
     

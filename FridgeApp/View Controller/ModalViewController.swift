@@ -7,9 +7,13 @@
 //
 
 import UIKit
+import CoreData
 
 class ModalViewController: UIViewController {
     weak var coordinator: MainCoordinator?
+    
+    let context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext ??
+        NSManagedObjectContext.init(concurrencyType: .mainQueueConcurrencyType)
     
     lazy var centerYConstraint: NSLayoutConstraint = {
         let centerYConstraint = modalView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
@@ -18,6 +22,7 @@ class ModalViewController: UIViewController {
     
     lazy var modalView: ModalView = {
         let modalView = ModalView()
+        modalView.delegate = self
         modalView.translatesAutoresizingMaskIntoConstraints = false
         return modalView
     }()
@@ -146,5 +151,18 @@ extension ModalViewController: UITextFieldDelegate {
         UIView.animate(withDuration: 0.5) {
             self.view.layoutIfNeeded()
         }
+    }
+}
+
+extension ModalViewController: ModalViewDelegate {
+    func saveProductWith(title: String, expiryDate: String, colorName: String, andIconName: String) {
+        let product = Product.init(context: context)
+        product.title = title
+        product.days = expiryDate
+        product.color = colorName
+        product.cutImage = andIconName
+        product.save()
+        
+        coordinator?.dissmissModalViewController()
     }
 }

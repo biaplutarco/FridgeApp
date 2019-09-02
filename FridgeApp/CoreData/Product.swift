@@ -10,6 +10,4 @@ import UIKit
 import CoreData
 
 @objc(Product)
-final class Product: NSManagedObject, CoreDataModel {
-    
-}
+final class Product: NSManagedObject, CoreDataModel {}

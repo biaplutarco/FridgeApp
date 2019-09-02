@@ -20,7 +20,7 @@ class ProductCell: UICollectionViewCell {
     lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = #imageLiteral(resourceName: "CutMilk")
-        imageView.layer.opacity = 0.08
+        imageView.layer.opacity = 0.2
         imageView.layer.cornerRadius = 10
         imageView.layer.maskedCorners = [.layerMinXMaxYCorner]
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -57,13 +57,14 @@ class ProductCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setUpCell(title: String, imageName: String, colorName: String, days: String) {
+    func setUpCell(title: String, imageName: String, colorName: String, days: Date) {
         let image = UIImage.init(named: imageName)
         let color = UIColor.init(named: colorName)
+        let countDays = "\(days.daysSinceNow)"
         
         titleLabel.text = title
         imageView.image = image
-        daysLabel.text = days
+        daysLabel.text = countDays
         imageView.tintColor = color
     }
     

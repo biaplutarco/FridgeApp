@@ -36,9 +36,16 @@ class ModalView: UIView {
         return title
     }()
     
-    lazy var productDays: String = {
-        let days = "expiry date"
-        return days
+    lazy var expiryDate: Date = {
+        let date = Date()
+        return date
+    }()
+    
+    lazy var dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .none
+        return formatter
     }()
     
     lazy var iconCollectionView: UICollectionView = {
@@ -82,7 +89,7 @@ class ModalView: UIView {
         let button = TextRedButton()
         button.setTitle("Colocar", for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(addProduct(_:)), for: .touchUpInside)
+        button.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
         return button
     }()
     
@@ -110,15 +117,34 @@ class ModalView: UIView {
         layer.cornerRadius = 10
     }
     
-    @objc func addProduct(_ sender: UIButton) {
-        let iconName = icons[lastIconIndexPath.row]
-        print("colocar um alert aqui pra pessoa nao poder passar sem colocar imagem e cor")
-        print("red button tapped")
-        delegate?.saveProductWith(title: productTitle, expiryDate: productDays, colorName: selectedColorName, andIconName: iconName)
-        print(productDays)
-        print(productTitle)
-        print(selectedColorName)
-        print(iconName)
+    @objc func buttonTapped(_ sender: UIButton) {
+        let product = createProduct()
+        delegate?.saveProduct(product)
+    }
+    
+    private func createProduct() -> Product {
+        let imageName = "Cut\(icons[lastIconIndexPath.row])"
+        print(imageName)
+        let titleIndex = IndexPath(row: 0, section: 0)
+        let dateIndex = IndexPath(row: 1, section: 0)
+        let product = Product(context: Product.context)
+        product.color = selectedColorName
+        product.image = imageName
+        
+        if let titleCell = tableView.cellForRow(at: titleIndex) as? InputCell,
+            let text = titleCell.textField.text {
+            //            productTitle = text
+            product.title = text
+        }
+        
+        if let dateCell = tableView.cellForRow(at: dateIndex) as? InputCell,
+            let text = dateCell.textField.text,
+            let date = dateFormatter.date(from: text) {
+            //            expiryDate = date
+            product.days = date
+        }
+        
+        return product
     }
     
     private func configConstraints() {
@@ -227,17 +253,6 @@ extension ModalView: UITableViewDelegate, UITableViewDataSource {
         }
         
         return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let cell = tableView.cellForRow(at: indexPath) as? InputCell else { return }
-        if indexPath.row == 1 {
-            guard let text = cell.textField.text else { return }
-            productDays = text
-        } else {
-            guard let text = cell.textField.text else { return }
-            productTitle = text
-        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

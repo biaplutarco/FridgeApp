@@ -2,11 +2,10 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14492.1" systemVersion="18G87" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Product" representedClassName="Product" syncable="YES" codeGenerationType="category">
         <attribute name="color" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="cutImage" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="days" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="days" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="image" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
-    <fetchRequest name="FetchRequest" entity="Product"/>
     <elements>
         <element name="Product" positionX="-63" positionY="-18" width="128" height="105"/>
     </elements>

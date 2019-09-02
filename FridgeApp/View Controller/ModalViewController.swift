@@ -10,10 +10,7 @@ import UIKit
 import CoreData
 
 class ModalViewController: UIViewController {
-    weak var coordinator: MainCoordinator?
-    
-    let context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext ??
-        NSManagedObjectContext.init(concurrencyType: .mainQueueConcurrencyType)
+    weak var delegate: NavigationDelegate?
     
     lazy var centerYConstraint: NSLayoutConstraint = {
         let centerYConstraint = modalView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
@@ -57,7 +54,6 @@ class ModalViewController: UIViewController {
         dismiss(animated: true) {
             self.backgroundImageView.removeFromSuperview()
         }
-        
     }
     
     func setUpModelView(image: UIImage) {
@@ -155,14 +151,8 @@ extension ModalViewController: UITextFieldDelegate {
 }
 
 extension ModalViewController: ModalViewDelegate {
-    func saveProductWith(title: String, expiryDate: String, colorName: String, andIconName: String) {
-        let product = Product.init(context: context)
-        product.title = title
-        product.days = expiryDate
-        product.color = colorName
-        product.cutImage = andIconName
+    func saveProduct(_ product: Product) {
         product.save()
-        
-        coordinator?.dissmissModalViewController()
+        delegate?.didSaveProduct(product)
     }
 }

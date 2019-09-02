@@ -16,7 +16,7 @@ class ViewController: UIViewController {
         let products = Product.all()
         return products
     }()
-    
+
     lazy var collectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.minimumLineSpacing = 24
@@ -52,7 +52,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor.AppColors.lightGray
         
-        products.forEach { $0.destroy() }
+//        products.forEach { $0.destroy() }
 
         addSubviews()
         configConstrints()
@@ -64,7 +64,7 @@ class ViewController: UIViewController {
     
     @objc func goToModal(_ sender: UIButton) {
         navigationController?.view.addSubview(blurredView)
-        coordinator?.goToModalVC(snapShot: screenShotMethod())
+        coordinator?.goToModelViewControllerWith(snapShot: screenShotMethod())
     }
     
     func screenShotMethod() -> UIImage {
@@ -73,6 +73,14 @@ class ViewController: UIViewController {
         guard let image = UIGraphicsGetImageFromCurrentImageContext() else { return UIImage() }
         UIGraphicsEndImageContext()
         return image
+    }
+    
+    func insertProduct(_ product: Product) {
+        products.insert(product, at: 0)
+    }
+    
+    func insertCollectionItem() {
+        collectionView.insertItems(at: [IndexPath(item: 0, section: 0)])
     }
     
     private func configConstrints() {
@@ -106,9 +114,9 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProductCell", for: indexPath) as? ProductCell else { return UICollectionViewCell() }
         
         let product = products[indexPath.row]
-        guard let title = product.title, let imageName = product.cutImage,
+        guard let title = product.title, let imageName = product.image,
             let colorName = product.color, let days = product.days else { return UICollectionViewCell() }
-            cell.setUpCell(title: title, imageName: imageName, colorName: colorName, days: days)
+        cell.setUpCell(title: title, imageName: imageName, colorName: colorName, days: days)
         
         return cell
     }

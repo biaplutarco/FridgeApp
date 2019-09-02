@@ -9,5 +9,5 @@
 import UIKit
 
 protocol ModalViewDelegate: class {
-    func saveProductWith(title: String, expiryDate: String, colorName: String, andIconName: String)
+    func saveProduct(_ product: Product)
 }

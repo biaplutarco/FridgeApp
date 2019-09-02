@@ -28,27 +28,30 @@ class MainCoordinator: Coordinator {
     }
     
     func start() {
-//        let vc = ViewController()
         viewController.coordinator = self
         viewController.title = "Sua Geladeira"
         navigationController.pushViewController(viewController, animated: false)
     }
     
-    func goToModalVC(snapShot: UIImage) {
-//        let vc = ModalViewController()
-        modalViewController.coordinator = self
+    func goToModelViewControllerWith(snapShot: UIImage) {
+        modalViewController.delegate = self
         navigationController.present(modalViewController, animated: true) {
             self.modalViewController.setUpModelView(image: snapShot)
             self.modalViewController.configBackgroundImageView()
         }
     }
     
-    func dissmissModalViewController() {
+    func updateViewController() {
+        print("colocar um alert aqui pra pessoa nao poder passar sem colocar imagem e cor")
         modalViewController.dismiss(animated: true) {
-            let indexPath = IndexPath(item: 0, section: 0)
-            self.viewController.products = Product.all()
-            self.viewController.collectionView.insertItems(at: [indexPath])
-            self.viewController.collectionView.reloadItems(at: [indexPath])
+            self.viewController.insertCollectionItem()
         }
+    }
+}
+
+extension MainCoordinator: NavigationDelegate {
+    func didSaveProduct(_ product: Product) {
+        viewController.insertProduct(product)
+        updateViewController()
     }
 }

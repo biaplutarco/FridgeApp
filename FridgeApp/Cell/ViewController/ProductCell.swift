@@ -60,7 +60,7 @@ class ProductCell: UICollectionViewCell {
     func setUpCell(title: String, imageName: String, colorName: String, days: Date) {
         let image = UIImage.init(named: imageName)
         let color = UIColor.init(named: colorName)
-        let countDays = "\(days.daysSinceNow)"
+        let countDays = "\(days.daysUntil)"
         
         titleLabel.text = title
         imageView.image = image

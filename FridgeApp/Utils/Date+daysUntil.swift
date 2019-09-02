@@ -9,12 +9,12 @@
 import Foundation
 
 extension Date {
-    var daysSinceNow: Int {
+    var daysUntil: Int {
         let now = Date()
         let formatter = DateFormatter()
         formatter.timeZone = TimeZone.current
         formatter.dateFormat = "MMMM dd, yyyy"
-        guard let days = Calendar.current.dateComponents([.day], from: self, to: now).day else { return Int() }
+        guard let days = Calendar.current.dateComponents([.day], from: now, to: self).day else { return Int() }
         
         return days
     }

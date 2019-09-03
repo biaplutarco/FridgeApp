@@ -12,7 +12,7 @@ class ProductCell: UICollectionViewCell {
     lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 14)
-        label.textColor = UIColor.AppColors.darkGray
+        label.textColor = .textColor
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -30,7 +30,7 @@ class ProductCell: UICollectionViewCell {
     lazy var daysLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 18)
-        label.textColor = UIColor.AppColors.darkGray
+        label.textColor = .textColor
         label.textAlignment = .right
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -41,7 +41,7 @@ class ProductCell: UICollectionViewCell {
         label.font = UIFont.systemFont(ofSize: 11)
         label.text = "restantes"
         label.textAlignment = .right
-        label.textColor = UIColor.AppColors.darkGray
+        label.textColor = .textColor
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -57,15 +57,14 @@ class ProductCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setUpCell(title: String, imageName: String, colorName: String, days: Date) {
-        let image = UIImage.init(named: imageName)
-        let color = UIColor.init(named: colorName)
-        let countDays = "\(days.daysUntil)"
-        
-        titleLabel.text = title
-        imageView.image = image
-        daysLabel.text = countDays
-        imageView.tintColor = color
+    func setUpCellFor(product: Product) {
+        if let imageName = product.image, let colorName = product.color,
+            let days = product.days?.daysUntil, let title = product.title {
+            titleLabel.text = title
+            imageView.image = UIImage.init(named: imageName)
+            daysLabel.text = String(days)
+            imageView.tintColor = UIColor.init(named: colorName)
+        }
     }
     
     private func addSubviews() {
@@ -78,14 +77,7 @@ class ProductCell: UICollectionViewCell {
     private func configCell() {
         backgroundColor = UIColor.white
         layer.cornerRadius = 10
-//        Shadow Configs
-        let rect = CGRect(origin: CGPoint(x: (frame.width - frame.width/1.3)/2, y: frame.height),
-                          size: CGSize(width: frame.width/1.3, height: frame.height/10))
-        layer.shadowPath = UIBezierPath(roundedRect: rect, cornerRadius: frame.width/1.3).cgPath
-        layer.shadowColor = UIColor.black.cgColor
-        layer.shadowOpacity = 0.2
-        layer.shadowRadius = 8
-        layer.masksToBounds = false
+        configShadowWith(color: UIColor.black)
     }
     
     private func configConstraints() {

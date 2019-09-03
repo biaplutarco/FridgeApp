@@ -11,7 +11,7 @@
 		A43957E12315C91600876805 /* PListData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43957E02315C91600876805 /* PListData.swift */; };
 		A43957E52315EF3E00876805 /* ColorPList.plist in Resources */ = {isa = PBXBuildFile; fileRef = A43957E42315EF3E00876805 /* ColorPList.plist */; };
 		A4570013231067D9000E9500 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4570012231067D9000E9500 /* AppDelegate.swift */; };
-		A4570015231067D9000E9500 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4570014231067D9000E9500 /* ViewController.swift */; };
+		A4570015231067D9000E9500 /* ProductsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4570014231067D9000E9500 /* ProductsViewController.swift */; };
 		A457001B231067D9000E9500 /* FridgeApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A4570019231067D9000E9500 /* FridgeApp.xcdatamodeld */; };
 		A457001D231067DB000E9500 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A457001C231067DB000E9500 /* Assets.xcassets */; };
 		A4570020231067DB000E9500 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A457001E231067DB000E9500 /* LaunchScreen.storyboard */; };
@@ -35,8 +35,15 @@
 		A483B586231887FD00862628 /* NSManagedObject+className.swift in Sources */ = {isa = PBXBuildFile; fileRef = A483B585231887FD00862628 /* NSManagedObject+className.swift */; };
 		A483B5892318914500862628 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = A483B5882318914500862628 /* Product.swift */; };
 		A483B58F2318A45300862628 /* ModalViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A483B58E2318A45300862628 /* ModalViewDelegate.swift */; };
-		A4AB228F231D77920013062A /* Date+daysUntil.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AB228E231D77920013062A /* Date+daysUntil.swift */; };
+		A4AB228F231D77920013062A /* Date+DaysUntil.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AB228E231D77920013062A /* Date+DaysUntil.swift */; };
 		A4AB2291231D8F490013062A /* NavigationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AB2290231D8F490013062A /* NavigationDelegate.swift */; };
+		A4AB2293231D97FD0013062A /* NavigationBar+configNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AB2292231D97FD0013062A /* NavigationBar+configNavigationBar.swift */; };
+		A4AB2295231D997F0013062A /* UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AB2294231D997F0013062A /* UICollectionView.swift */; };
+		A4AB2298231D9CBF0013062A /* UIView+Shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AB2297231D9CBF0013062A /* UIView+Shadow.swift */; };
+		A4AB229A231DB13B0013062A /* ModalCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AB2299231DB13B0013062A /* ModalCollectionView.swift */; };
+		A4AB229C231DB70E0013062A /* ProductCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AB229B231DB70E0013062A /* ProductCollectionView.swift */; };
+		A4AB229E231DE5320013062A /* ProductsViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AB229D231DE5320013062A /* ProductsViewControllerDelegate.swift */; };
+		A4AB22A0231DEAB20013062A /* UIImage+SnapShot.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AB229F231DEAB20013062A /* UIImage+SnapShot.swift */; };
 		A4C6B9DF2312F47700BD5150 /* IconCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C6B9DE2312F47700BD5150 /* IconCell.swift */; };
 		A4C6B9E123130B9400BD5150 /* ColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C6B9E023130B9400BD5150 /* ColorCell.swift */; };
 		A4CC7DFA2314387600D16D82 /* InputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CC7DF92314387600D16D82 /* InputCell.swift */; };
@@ -65,7 +72,7 @@
 		A43957E42315EF3E00876805 /* ColorPList.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ColorPList.plist; sourceTree = "<group>"; };
 		A457000F231067D9000E9500 /* FridgeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FridgeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4570012231067D9000E9500 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A4570014231067D9000E9500 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A4570014231067D9000E9500 /* ProductsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsViewController.swift; sourceTree = "<group>"; };
 		A457001A231067D9000E9500 /* FridgeApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FridgeApp.xcdatamodel; sourceTree = "<group>"; };
 		A457001C231067DB000E9500 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A457001F231067DB000E9500 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -94,8 +101,15 @@
 		A483B585231887FD00862628 /* NSManagedObject+className.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObject+className.swift"; sourceTree = "<group>"; };
 		A483B5882318914500862628 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		A483B58E2318A45300862628 /* ModalViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewDelegate.swift; sourceTree = "<group>"; };
-		A4AB228E231D77920013062A /* Date+daysUntil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+daysUntil.swift"; sourceTree = "<group>"; };
+		A4AB228E231D77920013062A /* Date+DaysUntil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+DaysUntil.swift"; sourceTree = "<group>"; };
 		A4AB2290231D8F490013062A /* NavigationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationDelegate.swift; sourceTree = "<group>"; };
+		A4AB2292231D97FD0013062A /* NavigationBar+configNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationBar+configNavigationBar.swift"; sourceTree = "<group>"; };
+		A4AB2294231D997F0013062A /* UICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionView.swift; sourceTree = "<group>"; };
+		A4AB2297231D9CBF0013062A /* UIView+Shadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Shadow.swift"; sourceTree = "<group>"; };
+		A4AB2299231DB13B0013062A /* ModalCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalCollectionView.swift; sourceTree = "<group>"; };
+		A4AB229B231DB70E0013062A /* ProductCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCollectionView.swift; sourceTree = "<group>"; };
+		A4AB229D231DE5320013062A /* ProductsViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsViewControllerDelegate.swift; sourceTree = "<group>"; };
+		A4AB229F231DEAB20013062A /* UIImage+SnapShot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+SnapShot.swift"; sourceTree = "<group>"; };
 		A4C6B9DE2312F47700BD5150 /* IconCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconCell.swift; sourceTree = "<group>"; };
 		A4C6B9E023130B9400BD5150 /* ColorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCell.swift; sourceTree = "<group>"; };
 		A4CC7DF92314387600D16D82 /* InputCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputCell.swift; sourceTree = "<group>"; };
@@ -218,6 +232,8 @@
 				A457006323120C02000E9500 /* ModalView.swift */,
 				A483B58E2318A45300862628 /* ModalViewDelegate.swift */,
 				A483B5662316E7C900862628 /* TextRedButton.swift */,
+				A4AB2299231DB13B0013062A /* ModalCollectionView.swift */,
+				A4AB229B231DB70E0013062A /* ProductCollectionView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -247,7 +263,8 @@
 		A483B58A2318937800862628 /* View Controller */ = {
 			isa = PBXGroup;
 			children = (
-				A4570014231067D9000E9500 /* ViewController.swift */,
+				A4570014231067D9000E9500 /* ProductsViewController.swift */,
+				A4AB229D231DE5320013062A /* ProductsViewControllerDelegate.swift */,
 				A457005F2311FE10000E9500 /* ModalViewController.swift */,
 				A4AB2290231D8F490013062A /* NavigationDelegate.swift */,
 			);
@@ -257,9 +274,8 @@
 		A483B58B2318939B00862628 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				A457004D231170C1000E9500 /* UIColors+AppColors.swift */,
+				A4AB2296231D998D0013062A /* Extension */,
 				A483B5642316E6AA00862628 /* ModalCollectionFlowLayout.swift */,
-				A4AB228E231D77920013062A /* Date+daysUntil.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -281,6 +297,19 @@
 				A4CC7DF92314387600D16D82 /* InputCell.swift */,
 			);
 			path = ModalViewController;
+			sourceTree = "<group>";
+		};
+		A4AB2296231D998D0013062A /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				A4AB2294231D997F0013062A /* UICollectionView.swift */,
+				A457004D231170C1000E9500 /* UIColors+AppColors.swift */,
+				A4AB2292231D97FD0013062A /* NavigationBar+configNavigationBar.swift */,
+				A4AB2297231D9CBF0013062A /* UIView+Shadow.swift */,
+				A4AB229F231DEAB20013062A /* UIImage+SnapShot.swift */,
+				A4AB228E231D77920013062A /* Date+DaysUntil.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -438,18 +467,23 @@
 			files = (
 				A457004A23116896000E9500 /* Coordinator.swift in Sources */,
 				A483B586231887FD00862628 /* NSManagedObject+className.swift in Sources */,
-				A4570015231067D9000E9500 /* ViewController.swift in Sources */,
+				A4570015231067D9000E9500 /* ProductsViewController.swift in Sources */,
 				A483B58F2318A45300862628 /* ModalViewDelegate.swift in Sources */,
 				A483B5702316FB7600862628 /* Deletable.swift in Sources */,
+				A4AB229A231DB13B0013062A /* ModalCollectionView.swift in Sources */,
 				A483B5652316E6AA00862628 /* ModalCollectionFlowLayout.swift in Sources */,
 				A4C6B9DF2312F47700BD5150 /* IconCell.swift in Sources */,
 				A457004C23116A36000E9500 /* MainCoordinator.swift in Sources */,
 				A483B5892318914500862628 /* Product.swift in Sources */,
 				A483B5672316E7C900862628 /* TextRedButton.swift in Sources */,
+				A4AB22A0231DEAB20013062A /* UIImage+SnapShot.swift in Sources */,
 				A483B5722316FBA100862628 /* Readeable.swift in Sources */,
+				A4AB2293231D97FD0013062A /* NavigationBar+configNavigationBar.swift in Sources */,
 				A483B58423183C6300862628 /* CoreDataModel.swift in Sources */,
 				A4570013231067D9000E9500 /* AppDelegate.swift in Sources */,
+				A4AB2295231D997F0013062A /* UICollectionView.swift in Sources */,
 				A483B56E2316FB3100862628 /* Writeable.swift in Sources */,
+				A4AB2298231D9CBF0013062A /* UIView+Shadow.swift in Sources */,
 				A45700602311FE10000E9500 /* ModalViewController.swift in Sources */,
 				A4CC7DFA2314387600D16D82 /* InputCell.swift in Sources */,
 				A43957E12315C91600876805 /* PListData.swift in Sources */,
@@ -459,9 +493,11 @@
 				A457005223118DED000E9500 /* ProductCell.swift in Sources */,
 				A483B5762316FDC300862628 /* ModelType.swift in Sources */,
 				A4AB2291231D8F490013062A /* NavigationDelegate.swift in Sources */,
-				A4AB228F231D77920013062A /* Date+daysUntil.swift in Sources */,
+				A4AB228F231D77920013062A /* Date+DaysUntil.swift in Sources */,
 				A457004E231170C1000E9500 /* UIColors+AppColors.swift in Sources */,
+				A4AB229E231DE5320013062A /* ProductsViewControllerDelegate.swift in Sources */,
 				A4C6B9E123130B9400BD5150 /* ColorCell.swift in Sources */,
+				A4AB229C231DB70E0013062A /* ProductCollectionView.swift in Sources */,
 				A45700582311BDA8000E9500 /* SeparatorCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

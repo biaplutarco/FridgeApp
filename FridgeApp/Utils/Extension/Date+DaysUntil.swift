@@ -1,5 +1,5 @@
 //
-//  Date+daysSinceNow.swift
+//  Date+DaysUntil.swift
 //  FridgeApp
 //
 //  Created by Bia on 30/08/19.

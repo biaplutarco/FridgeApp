@@ -9,34 +9,25 @@
 import UIKit
 import CoreData
 
-class ViewController: UIViewController {
-    weak var coordinator: MainCoordinator?
+class ProductsViewController: UIViewController {
+    weak var delegate: ProductsViewControllerDelegate?
     
     lazy var products: [Product] = {
         let products = Product.all()
         return products
     }()
 
-    lazy var collectionView: UICollectionView = {
-        let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.minimumLineSpacing = 24
-        let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: flowLayout)
+    lazy var collectionView: ProductCollectionView = {
+        let collectionView = ProductCollectionView(registerCellOfType: ProductCell.self)
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.backgroundColor = .clear
-        collectionView.alwaysBounceVertical = true
-        collectionView.showsVerticalScrollIndicator = false
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.register(ProductCell.self, forCellWithReuseIdentifier: "ProductCell")
-        collectionView.register(SeparatorCell.self, forCellWithReuseIdentifier: "SeparatorCell")
         return collectionView
     }()
     
     lazy var redButton: TextRedButton = {
         let button = TextRedButton()
         button.setTitle("Colocar na geladeira", for: .normal)
-        button.addTarget(self, action: #selector(goToModal(_:)), for: .touchUpInside)
-        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(didTapButton(_:)), for: .touchUpInside)
         return button
     }()
     
@@ -50,10 +41,8 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.AppColors.lightGray
-        
+        view.backgroundColor = .backgroundColor
 //        products.forEach { $0.destroy() }
-
         addSubviews()
         configConstrints()
     }
@@ -62,17 +51,15 @@ class ViewController: UIViewController {
         blurredView.removeFromSuperview()
     }
     
-    @objc func goToModal(_ sender: UIButton) {
+    @objc func didTapButton(_ sender: UIButton) {
         navigationController?.view.addSubview(blurredView)
-        coordinator?.goToModelViewControllerWith(snapShot: screenShotMethod())
+        delegate?.presentModalWith(backgroundImage: screenShotMethod())
     }
     
     func screenShotMethod() -> UIImage {
         UIGraphicsBeginImageContextWithOptions(view.bounds.size, false, 0)
         view.drawHierarchy(in: view.bounds, afterScreenUpdates: true)
-        guard let image = UIGraphicsGetImageFromCurrentImageContext() else { return UIImage() }
-        UIGraphicsEndImageContext()
-        return image
+        return UIImage.snapShot
     }
     
     func insertProduct(_ product: Product) {
@@ -105,18 +92,14 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension ProductsViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return products.count //tem que somar pra poder sempre tem a barrinha nos 3 primeiros
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProductCell", for: indexPath) as? ProductCell else { return UICollectionViewCell() }
-        
-        let product = products[indexPath.row]
-        guard let title = product.title, let imageName = product.image,
-            let colorName = product.color, let days = product.days else { return UICollectionViewCell() }
-        cell.setUpCell(title: title, imageName: imageName, colorName: colorName, days: days)
+        let cell = collectionView.dequeueCell(of: ProductCell.self, forIndexPath: indexPath)
+        cell.setUpCellFor(product: products[indexPath.row])
         
         return cell
     }

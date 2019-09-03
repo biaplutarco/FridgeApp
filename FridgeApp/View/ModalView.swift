@@ -22,7 +22,7 @@ class ModalView: UIView {
     }()
     
     lazy var selectedColorName: String = {
-        let colorName = "Red"
+        let colorName = "ActionColor"
         return colorName
     }()
     
@@ -48,28 +48,17 @@ class ModalView: UIView {
         return formatter
     }()
     
-    lazy var iconCollectionView: UICollectionView = {
-        let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: ModalCollectionFlowLayout())
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.backgroundColor = .clear
-        collectionView.alwaysBounceHorizontal = true
-        collectionView.showsHorizontalScrollIndicator = false
+    lazy var iconCollectionView: ModalCollectionView = {
+        let collectionView = ModalCollectionView(registerCellOfType: IconCell.self, isStatic: false)
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.register(IconCell.self, forCellWithReuseIdentifier: "IconCell")
-        
         return collectionView
     }()
     
-    lazy var colorCollectionView: UICollectionView = {
-        let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: ModalCollectionFlowLayout())
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.backgroundColor = .clear
-        collectionView.isScrollEnabled = false
+    lazy var colorCollectionView: ModalCollectionView = {
+        let collectionView = ModalCollectionView(registerCellOfType: ColorCell.self, isStatic: true)
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.register(ColorCell.self, forCellWithReuseIdentifier: "ColorCell")
-        
         return collectionView
     }()
     
@@ -88,8 +77,7 @@ class ModalView: UIView {
     lazy var redButton: TextRedButton = {
         let button = TextRedButton()
         button.setTitle("Colocar", for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
+        button.addTarget(self, action: #selector(didTapButton(_:)), for: .touchUpInside)
         return button
     }()
     
@@ -117,14 +105,13 @@ class ModalView: UIView {
         layer.cornerRadius = 10
     }
     
-    @objc func buttonTapped(_ sender: UIButton) {
+    @objc func didTapButton(_ sender: UIButton) {
         let product = createProduct()
         delegate?.saveProduct(product)
     }
     
     private func createProduct() -> Product {
         let imageName = "Cut\(icons[lastIconIndexPath.row])"
-        print(imageName)
         let titleIndex = IndexPath(row: 0, section: 0)
         let dateIndex = IndexPath(row: 1, section: 0)
         let product = Product(context: Product.context)
@@ -133,18 +120,33 @@ class ModalView: UIView {
         
         if let titleCell = tableView.cellForRow(at: titleIndex) as? InputCell,
             let text = titleCell.textField.text {
-            //            productTitle = text
             product.title = text
         }
         
-        if let dateCell = tableView.cellForRow(at: dateIndex) as? InputCell,
-            let text = dateCell.textField.text,
+        if let dateCell = tableView.cellForRow(at: dateIndex) as? InputCell, let text = dateCell.textField.text,
             let date = dateFormatter.date(from: text) {
-            //            expiryDate = date
             product.days = date
         }
         
         return product
+    }
+    
+    private func cellForCollectionView(_ collectionView: UICollectionView, at indexPath: IndexPath) -> UICollectionViewCell {
+        if collectionView === iconCollectionView {
+            guard let image = UIImage.init(named: icons[indexPath.row]), let color = UIColor.init(named: selectedColorName)
+                else { fatalError() }
+            
+            let cell = collectionView.dequeueCell(of: IconCell.self, forIndexPath: indexPath)
+            cell.setUpCellWith(image: image, andSelectedColor: color)
+            
+            return cell
+        } else {
+            let cell = collectionView.dequeueCell(of: ColorCell.self, forIndexPath: indexPath)
+            guard let color = UIColor.init(named: colors[indexPath.row]) else { fatalError() }
+            cell.setUpCellWith(color: color)
+            
+            return cell
+        }
     }
     
     private func configConstraints() {
@@ -188,20 +190,7 @@ extension ModalView: UICollectionViewDelegate, UICollectionViewDataSource, UICol
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if collectionView === iconCollectionView {
-            guard let color = UIColor.init(named: selectedColorName),
-                  let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "IconCell", for: indexPath) as? IconCell,
-                  let icon = UIImage.init(named: icons[indexPath.row]) else { return UICollectionViewCell() }
-            cell.setUpCellWith(image: icon, andSelectedColor: color)
-            
-            return cell
-        } else {
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ColorCell", for: indexPath) as? ColorCell,
-                  let color = UIColor.init(named: colors[indexPath.row]) else { return UICollectionViewCell() }
-            cell.setUpCellWith(color: color)
-            
-            return cell
-        }
+        return cellForCollectionView(collectionView, at: indexPath)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

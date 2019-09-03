@@ -11,7 +11,7 @@ import UIKit
 class SeparatorCell: UICollectionViewCell {
     lazy var lineView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor.AppColors.lightRed
+        view.backgroundColor = .backgroundColor
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()

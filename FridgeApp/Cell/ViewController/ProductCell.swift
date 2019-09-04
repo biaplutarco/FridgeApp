@@ -8,7 +8,13 @@
 
 import UIKit
 
-class ProductCell: UICollectionViewCell {
+class ProductCell: UICollectionViewCell, Wiggleable {
+    var isWiggling: Bool = false {
+        didSet {
+            uptadeWiggling()
+        }
+    }
+    
     lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 14)
@@ -106,3 +112,4 @@ class ProductCell: UICollectionViewCell {
             ])
     }
 }
+

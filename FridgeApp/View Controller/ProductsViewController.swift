@@ -113,10 +113,7 @@ extension ProductsViewController: UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        collectionView.beginInteractiveMovementForItem(at: indexPath)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        collectionView.cancelInteractiveMovement()
+        guard let cell = collectionView.cellForItem(at: indexPath) as? ProductCell else { return }
+        cell.isWiggling.toggle()
     }
 }

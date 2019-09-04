@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A42420E5231F3BAE004DB5DE /* Wiggleable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42420E4231F3BAE004DB5DE /* Wiggleable.swift */; };
 		A43957DE2315C7A100876805 /* IconPList.plist in Resources */ = {isa = PBXBuildFile; fileRef = A43957DD2315C7A100876805 /* IconPList.plist */; };
 		A43957E12315C91600876805 /* PListData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43957E02315C91600876805 /* PListData.swift */; };
 		A43957E52315EF3E00876805 /* ColorPList.plist in Resources */ = {isa = PBXBuildFile; fileRef = A43957E42315EF3E00876805 /* ColorPList.plist */; };
@@ -67,6 +68,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A42420E4231F3BAE004DB5DE /* Wiggleable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wiggleable.swift; sourceTree = "<group>"; };
 		A43957DD2315C7A100876805 /* IconPList.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = IconPList.plist; sourceTree = "<group>"; };
 		A43957E02315C91600876805 /* PListData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PListData.swift; sourceTree = "<group>"; };
 		A43957E42315EF3E00876805 /* ColorPList.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ColorPList.plist; sourceTree = "<group>"; };
@@ -230,6 +232,7 @@
 			isa = PBXGroup;
 			children = (
 				A457006323120C02000E9500 /* ModalView.swift */,
+				A483B5642316E6AA00862628 /* ModalCollectionFlowLayout.swift */,
 				A483B58E2318A45300862628 /* ModalViewDelegate.swift */,
 				A483B5662316E7C900862628 /* TextRedButton.swift */,
 				A4AB2299231DB13B0013062A /* ModalCollectionView.swift */,
@@ -275,7 +278,7 @@
 			isa = PBXGroup;
 			children = (
 				A4AB2296231D998D0013062A /* Extension */,
-				A483B5642316E6AA00862628 /* ModalCollectionFlowLayout.swift */,
+				A42420E4231F3BAE004DB5DE /* Wiggleable.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -494,6 +497,7 @@
 				A483B5762316FDC300862628 /* ModelType.swift in Sources */,
 				A4AB2291231D8F490013062A /* NavigationDelegate.swift in Sources */,
 				A4AB228F231D77920013062A /* Date+DaysUntil.swift in Sources */,
+				A42420E5231F3BAE004DB5DE /* Wiggleable.swift in Sources */,
 				A457004E231170C1000E9500 /* UIColors+AppColors.swift in Sources */,
 				A4AB229E231DE5320013062A /* ProductsViewControllerDelegate.swift in Sources */,
 				A4C6B9E123130B9400BD5150 /* ColorCell.swift in Sources */,

@@ -15,9 +15,12 @@ class ProductCollectionView: UICollectionView {
     }
     
     private init() {
-        let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.minimumLineSpacing = 24
-        super.init(frame: CGRect.zero, collectionViewLayout: flowLayout)
+        let layout = UICollectionViewFlowLayout()
+        layout.minimumLineSpacing = 24
+        layout.itemSize = CGSize(width: 100, height: 90)
+        layout.sectionInset = UIEdgeInsets(top: 10, left: 12, bottom: 10, right: 12)
+        
+        super.init(frame: CGRect.zero, collectionViewLayout: layout)
         configCollectionView()
     }
     
@@ -28,6 +31,7 @@ class ProductCollectionView: UICollectionView {
     private func configCollectionView() {
         backgroundColor = .clear
         alwaysBounceVertical = true
+        allowsMultipleSelection = false
         showsVerticalScrollIndicator = false
         translatesAutoresizingMaskIntoConstraints = false
     }

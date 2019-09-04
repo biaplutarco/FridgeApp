@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A42420E5231F3BAE004DB5DE /* Wiggleable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42420E4231F3BAE004DB5DE /* Wiggleable.swift */; };
+		A42420E7231F4A02004DB5DE /* ProductCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42420E6231F4A02004DB5DE /* ProductCellDelegate.swift */; };
 		A43957DE2315C7A100876805 /* IconPList.plist in Resources */ = {isa = PBXBuildFile; fileRef = A43957DD2315C7A100876805 /* IconPList.plist */; };
 		A43957E12315C91600876805 /* PListData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43957E02315C91600876805 /* PListData.swift */; };
 		A43957E52315EF3E00876805 /* ColorPList.plist in Resources */ = {isa = PBXBuildFile; fileRef = A43957E42315EF3E00876805 /* ColorPList.plist */; };
@@ -69,6 +70,7 @@
 
 /* Begin PBXFileReference section */
 		A42420E4231F3BAE004DB5DE /* Wiggleable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wiggleable.swift; sourceTree = "<group>"; };
+		A42420E6231F4A02004DB5DE /* ProductCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCellDelegate.swift; sourceTree = "<group>"; };
 		A43957DD2315C7A100876805 /* IconPList.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = IconPList.plist; sourceTree = "<group>"; };
 		A43957E02315C91600876805 /* PListData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PListData.swift; sourceTree = "<group>"; };
 		A43957E42315EF3E00876805 /* ColorPList.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ColorPList.plist; sourceTree = "<group>"; };
@@ -287,6 +289,7 @@
 			isa = PBXGroup;
 			children = (
 				A457005123118DED000E9500 /* ProductCell.swift */,
+				A42420E6231F4A02004DB5DE /* ProductCellDelegate.swift */,
 				A45700572311BDA8000E9500 /* SeparatorCell.swift */,
 			);
 			path = ViewController;
@@ -488,6 +491,7 @@
 				A483B56E2316FB3100862628 /* Writeable.swift in Sources */,
 				A4AB2298231D9CBF0013062A /* UIView+Shadow.swift in Sources */,
 				A45700602311FE10000E9500 /* ModalViewController.swift in Sources */,
+				A42420E7231F4A02004DB5DE /* ProductCellDelegate.swift in Sources */,
 				A4CC7DFA2314387600D16D82 /* InputCell.swift in Sources */,
 				A43957E12315C91600876805 /* PListData.swift in Sources */,
 				A457006423120C02000E9500 /* ModalView.swift in Sources */,

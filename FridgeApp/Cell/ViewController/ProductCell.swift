@@ -9,9 +9,12 @@
 import UIKit
 
 class ProductCell: UICollectionViewCell, Wiggleable {
+    weak var delegate: ProductCellDelegate?
+    
     var isWiggling: Bool = false {
         didSet {
             uptadeWiggling()
+            showExitButton()
         }
     }
     
@@ -52,6 +55,14 @@ class ProductCell: UICollectionViewCell, Wiggleable {
         return label
     }()
     
+    lazy var exitButton: UIButton = {
+        let button = UIButton()
+        button.setBackgroundImage(#imageLiteral(resourceName: "exit"), for: .normal)
+        button.addTarget(self, action: #selector(exitButtonTapped(_:)), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configCell()
@@ -61,6 +72,29 @@ class ProductCell: UICollectionViewCell, Wiggleable {
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    @objc func exitButtonTapped(_ sender: UIButton) {
+        delegate?.didTapButton()
+    }
+    
+    private func showExitButton() {
+        if isWiggling == true {
+            configExitButton()
+        } else {
+            exitButton.removeFromSuperview()
+        }
+    }
+    
+    private func configExitButton() {
+        addSubview(exitButton)
+        
+        NSLayoutConstraint.activate([
+            exitButton.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.25),
+            exitButton.heightAnchor.constraint(equalTo: exitButton.widthAnchor),
+            exitButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: (frame.width/4)*0.2),
+            exitButton.bottomAnchor.constraint(equalTo: topAnchor, constant: (frame.width/1.5)*0.2)
+            ])
     }
     
     func setUpCellFor(product: Product) {
@@ -112,4 +146,3 @@ class ProductCell: UICollectionViewCell, Wiggleable {
             ])
     }
 }
-

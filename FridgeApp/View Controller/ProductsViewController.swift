@@ -100,20 +100,21 @@ extension ProductsViewController: UICollectionViewDelegate, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueCell(of: ProductCell.self, forIndexPath: indexPath)
         cell.setUpCellFor(product: products[indexPath.row])
+        cell.delegate = self
         
         return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 100, height: 90)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 10, left: 6, bottom: 10, right: 6)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? ProductCell else { return }
         cell.isWiggling.toggle()
+    }
+}
+
+extension ProductsViewController: ProductCellDelegate {
+    func didTapButton() {
+        guard let indexPath = collectionView.indexPathsForSelectedItems?.last else { return }
+        products.remove(at: indexPath.row)
+        collectionView.deleteItems(at: [indexPath])
     }
 }

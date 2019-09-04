@@ -46,7 +46,6 @@ class ModalViewController: UIViewController {
         super.viewDidLoad()
         configModalView()
         configButton()
-        addObservers()
         hideKeyboardWhenTappedAround()
     }
     
@@ -87,12 +86,12 @@ class ModalViewController: UIViewController {
     private func configButton() {
         view.addSubview(exitButton)
         
-        let leftConstant = ((view.frame.width * 0.85) * 0.12)/4
+        let leftConstant = -((view.frame.width * 0.85) * 0.12)/3
         let bottomConstant = ((view.frame.width * 0.85) * 0.12)/2
         NSLayoutConstraint.activate([
             exitButton.widthAnchor.constraint(equalTo: modalView.widthAnchor, multiplier: 0.12),
             exitButton.heightAnchor.constraint(equalTo: exitButton.widthAnchor),
-            exitButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: leftConstant),
+            exitButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: leftConstant),
             exitButton.bottomAnchor.constraint(equalTo: modalView.topAnchor, constant: bottomConstant)
             ])
     }
@@ -103,13 +102,6 @@ extension ModalViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
-    }
-    //    Add observers to notificated when keyboard will show + hide
-    private func addObservers() {
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow),
-                                               name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide),
-                                               name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     //    Show keyboard + push to up texfield
     @objc func keyboardWillShow(notification: NSNotification) {
@@ -125,10 +117,6 @@ extension ModalViewController: UITextFieldDelegate {
         UIView.animate(withDuration: 1) {
             self.view.layoutIfNeeded()
         }
-    }
-    //    Hide keydoard + push to down textfield
-    @objc func keyboardWillHide(notification: NSNotification) {
-//        let contentInset: UIEdgeInsets = UIEdgeInsets.zero
     }
     //    Hide keyboard when touch up outside
     private func hideKeyboardWhenTappedAround() {

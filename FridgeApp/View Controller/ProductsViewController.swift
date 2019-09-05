@@ -114,6 +114,7 @@ extension ProductsViewController: UICollectionViewDelegate, UICollectionViewData
 extension ProductsViewController: ProductCellDelegate {
     func didTapButton() {
         guard let indexPath = collectionView.indexPathsForSelectedItems?.last else { return }
+        products[indexPath.row].destroy()
         products.remove(at: indexPath.row)
         collectionView.deleteItems(at: [indexPath])
     }

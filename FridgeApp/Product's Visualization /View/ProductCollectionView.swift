@@ -18,7 +18,7 @@ class ProductCollectionView: UICollectionView {
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 24
         layout.itemSize = CGSize(width: 100, height: 90)
-        layout.sectionInset = UIEdgeInsets(top: 10, left: 12, bottom: 10, right: 12)
+        layout.sectionInset = UIEdgeInsets(top: 16, left: 12, bottom: 10, right: 12)
         
         super.init(frame: CGRect.zero, collectionViewLayout: layout)
         configCollectionView()

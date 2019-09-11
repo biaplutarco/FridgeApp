@@ -26,6 +26,12 @@
 		A45700582311BDA8000E9500 /* SeparatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45700572311BDA8000E9500 /* SeparatorCell.swift */; };
 		A45700602311FE10000E9500 /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A457005F2311FE10000E9500 /* ModalViewController.swift */; };
 		A457006423120C02000E9500 /* ModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A457006323120C02000E9500 /* ModalView.swift */; };
+		A4704B5D2322CF0700AB3E93 /* Notificable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4704B5C2322CF0700AB3E93 /* Notificable.swift */; };
+		A4704B6B23280AD100AB3E93 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4704B6A23280AD100AB3E93 /* NotificationManager.swift */; };
+		A4704B6D232834F100AB3E93 /* WillExpiry.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4704B6C232834F100AB3E93 /* WillExpiry.swift */; };
+		A4704B6F232838A700AB3E93 /* ExipryToday.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4704B6E232838A700AB3E93 /* ExipryToday.swift */; };
+		A4704B71232839A700AB3E93 /* Exired.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4704B70232839A700AB3E93 /* Exired.swift */; };
+		A4704B7423286B0400AB3E93 /* DateComponets+FromTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4704B7323286B0400AB3E93 /* DateComponets+FromTime.swift */; };
 		A483B5652316E6AA00862628 /* ModalCollectionFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A483B5642316E6AA00862628 /* ModalCollectionFlowLayout.swift */; };
 		A483B5672316E7C900862628 /* TextRedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A483B5662316E7C900862628 /* TextRedButton.swift */; };
 		A483B56E2316FB3100862628 /* Writeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A483B56D2316FB3100862628 /* Writeable.swift */; };
@@ -94,6 +100,12 @@
 		A45700572311BDA8000E9500 /* SeparatorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatorCell.swift; sourceTree = "<group>"; };
 		A457005F2311FE10000E9500 /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
 		A457006323120C02000E9500 /* ModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalView.swift; sourceTree = "<group>"; };
+		A4704B5C2322CF0700AB3E93 /* Notificable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notificable.swift; sourceTree = "<group>"; };
+		A4704B6A23280AD100AB3E93 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		A4704B6C232834F100AB3E93 /* WillExpiry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WillExpiry.swift; sourceTree = "<group>"; };
+		A4704B6E232838A700AB3E93 /* ExipryToday.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExipryToday.swift; sourceTree = "<group>"; };
+		A4704B70232839A700AB3E93 /* Exired.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exired.swift; sourceTree = "<group>"; };
+		A4704B7323286B0400AB3E93 /* DateComponets+FromTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateComponets+FromTime.swift"; sourceTree = "<group>"; };
 		A483B5642316E6AA00862628 /* ModalCollectionFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalCollectionFlowLayout.swift; sourceTree = "<group>"; };
 		A483B5662316E7C900862628 /* TextRedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextRedButton.swift; sourceTree = "<group>"; };
 		A483B56D2316FB3100862628 /* Writeable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Writeable.swift; sourceTree = "<group>"; };
@@ -178,14 +190,12 @@
 			isa = PBXGroup;
 			children = (
 				A4570012231067D9000E9500 /* AppDelegate.swift */,
+				A457004B23116A36000E9500 /* MainCoordinator.swift */,
 				A483B58B2318939B00862628 /* Utils */,
-				A457005B2311F6DE000E9500 /* Coordinator */,
-				A483B56C2316FB1E00862628 /* Active Record */,
-				A483B5872318912000862628 /* CoreData */,
-				A43957DF2315C8F800876805 /* PList */,
-				A483B58A2318937800862628 /* View Controller */,
-				A457006523120CA5000E9500 /* View */,
-				A457005C2311F742000E9500 /* Cell */,
+				A4704B5B2322CE9E00AB3E93 /* Local Notification */,
+				A4704B692322D55900AB3E93 /* Database */,
+				A4704B5F2322D15700AB3E93 /* Product's Visualization  */,
+				A483B58A2318937800862628 /* Product's Addition */,
 				A457001C231067DB000E9500 /* Assets.xcassets */,
 				A457001E231067DB000E9500 /* LaunchScreen.storyboard */,
 				A4570021231067DB000E9500 /* Info.plist */,
@@ -212,35 +222,135 @@
 			path = FridgeAppUITests;
 			sourceTree = "<group>";
 		};
-		A457005B2311F6DE000E9500 /* Coordinator */ = {
+		A4704B5B2322CE9E00AB3E93 /* Local Notification */ = {
+			isa = PBXGroup;
+			children = (
+				A4704B6A23280AD100AB3E93 /* NotificationManager.swift */,
+				A4704B5C2322CF0700AB3E93 /* Notificable.swift */,
+				A4704B722328674F00AB3E93 /* Types */,
+			);
+			path = "Local Notification";
+			sourceTree = "<group>";
+		};
+		A4704B5E2322D06F00AB3E93 /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
 				A457004923116896000E9500 /* Coordinator.swift */,
-				A457004B23116A36000E9500 /* MainCoordinator.swift */,
+				A42420E4231F3BAE004DB5DE /* Wiggleable.swift */,
 			);
-			path = Coordinator;
+			path = Protocol;
 			sourceTree = "<group>";
 		};
-		A457005C2311F742000E9500 /* Cell */ = {
+		A4704B5F2322D15700AB3E93 /* Product's Visualization  */ = {
 			isa = PBXGroup;
 			children = (
-				A483B58D231893D800862628 /* ModalViewController */,
-				A483B58C231893C100862628 /* ViewController */,
+				A4704B662322D26100AB3E93 /* Delegate */,
+				A4704B612322D1F500AB3E93 /* Controller */,
+				A4704B622322D20500AB3E93 /* View */,
 			);
-			path = Cell;
+			path = "Product's Visualization ";
 			sourceTree = "<group>";
 		};
-		A457006523120CA5000E9500 /* View */ = {
+		A4704B602322D18100AB3E93 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A483B5662316E7C900862628 /* TextRedButton.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A4704B612322D1F500AB3E93 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A4570014231067D9000E9500 /* ProductsViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		A4704B622322D20500AB3E93 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A4AB229B231DB70E0013062A /* ProductCollectionView.swift */,
+				A4704B652322D24700AB3E93 /* Cell */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A4704B632322D21C00AB3E93 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A457005F2311FE10000E9500 /* ModalViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		A4704B642322D23300AB3E93 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				A457006323120C02000E9500 /* ModalView.swift */,
 				A483B5642316E6AA00862628 /* ModalCollectionFlowLayout.swift */,
-				A483B58E2318A45300862628 /* ModalViewDelegate.swift */,
-				A483B5662316E7C900862628 /* TextRedButton.swift */,
 				A4AB2299231DB13B0013062A /* ModalCollectionView.swift */,
-				A4AB229B231DB70E0013062A /* ProductCollectionView.swift */,
+				A4704B682322D29B00AB3E93 /* Cell */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		A4704B652322D24700AB3E93 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				A457005123118DED000E9500 /* ProductCell.swift */,
+				A45700572311BDA8000E9500 /* SeparatorCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		A4704B662322D26100AB3E93 /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				A4AB229D231DE5320013062A /* ProductsViewControllerDelegate.swift */,
+				A42420E6231F4A02004DB5DE /* ProductCellDelegate.swift */,
+			);
+			path = Delegate;
+			sourceTree = "<group>";
+		};
+		A4704B672322D27A00AB3E93 /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				A483B58E2318A45300862628 /* ModalViewDelegate.swift */,
+				A4AB2290231D8F490013062A /* NavigationDelegate.swift */,
+			);
+			path = Delegate;
+			sourceTree = "<group>";
+		};
+		A4704B682322D29B00AB3E93 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				A4C6B9DE2312F47700BD5150 /* IconCell.swift */,
+				A4C6B9E023130B9400BD5150 /* ColorCell.swift */,
+				A4CC7DF92314387600D16D82 /* InputCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		A4704B692322D55900AB3E93 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				A483B56C2316FB1E00862628 /* Active Record */,
+				A483B58323183C6300862628 /* CoreDataModel.swift */,
+				A483B585231887FD00862628 /* NSManagedObject+className.swift */,
+				A483B5882318914500862628 /* Product.swift */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
+		A4704B722328674F00AB3E93 /* Types */ = {
+			isa = PBXGroup;
+			children = (
+				A4704B6C232834F100AB3E93 /* WillExpiry.swift */,
+				A4704B6E232838A700AB3E93 /* ExipryToday.swift */,
+				A4704B70232839A700AB3E93 /* Exired.swift */,
+			);
+			path = Types;
 			sourceTree = "<group>";
 		};
 		A483B56C2316FB1E00862628 /* Active Record */ = {
@@ -255,54 +365,25 @@
 			path = "Active Record";
 			sourceTree = "<group>";
 		};
-		A483B5872318912000862628 /* CoreData */ = {
+		A483B58A2318937800862628 /* Product's Addition */ = {
 			isa = PBXGroup;
 			children = (
-				A483B58323183C6300862628 /* CoreDataModel.swift */,
-				A483B585231887FD00862628 /* NSManagedObject+className.swift */,
-				A483B5882318914500862628 /* Product.swift */,
+				A4704B672322D27A00AB3E93 /* Delegate */,
+				A4704B632322D21C00AB3E93 /* Controller */,
+				A4704B642322D23300AB3E93 /* View */,
 			);
-			path = CoreData;
-			sourceTree = "<group>";
-		};
-		A483B58A2318937800862628 /* View Controller */ = {
-			isa = PBXGroup;
-			children = (
-				A4570014231067D9000E9500 /* ProductsViewController.swift */,
-				A4AB229D231DE5320013062A /* ProductsViewControllerDelegate.swift */,
-				A457005F2311FE10000E9500 /* ModalViewController.swift */,
-				A4AB2290231D8F490013062A /* NavigationDelegate.swift */,
-			);
-			path = "View Controller";
+			path = "Product's Addition";
 			sourceTree = "<group>";
 		};
 		A483B58B2318939B00862628 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				A43957DF2315C8F800876805 /* PList */,
+				A4704B602322D18100AB3E93 /* View */,
+				A4704B5E2322D06F00AB3E93 /* Protocol */,
 				A4AB2296231D998D0013062A /* Extension */,
-				A42420E4231F3BAE004DB5DE /* Wiggleable.swift */,
 			);
 			path = Utils;
-			sourceTree = "<group>";
-		};
-		A483B58C231893C100862628 /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
-				A457005123118DED000E9500 /* ProductCell.swift */,
-				A42420E6231F4A02004DB5DE /* ProductCellDelegate.swift */,
-				A45700572311BDA8000E9500 /* SeparatorCell.swift */,
-			);
-			path = ViewController;
-			sourceTree = "<group>";
-		};
-		A483B58D231893D800862628 /* ModalViewController */ = {
-			isa = PBXGroup;
-			children = (
-				A4C6B9DE2312F47700BD5150 /* IconCell.swift */,
-				A4C6B9E023130B9400BD5150 /* ColorCell.swift */,
-				A4CC7DF92314387600D16D82 /* InputCell.swift */,
-			);
-			path = ModalViewController;
 			sourceTree = "<group>";
 		};
 		A4AB2296231D998D0013062A /* Extension */ = {
@@ -314,6 +395,7 @@
 				A4AB2297231D9CBF0013062A /* UIView+Shadow.swift */,
 				A4AB229F231DEAB20013062A /* UIImage+SnapShot.swift */,
 				A4AB228E231D77920013062A /* Date+DaysUntil.swift */,
+				A4704B7323286B0400AB3E93 /* DateComponets+FromTime.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -477,6 +559,7 @@
 				A483B58F2318A45300862628 /* ModalViewDelegate.swift in Sources */,
 				A483B5702316FB7600862628 /* Deletable.swift in Sources */,
 				A4AB229A231DB13B0013062A /* ModalCollectionView.swift in Sources */,
+				A4704B6F232838A700AB3E93 /* ExipryToday.swift in Sources */,
 				A483B5652316E6AA00862628 /* ModalCollectionFlowLayout.swift in Sources */,
 				A4C6B9DF2312F47700BD5150 /* IconCell.swift in Sources */,
 				A457004C23116A36000E9500 /* MainCoordinator.swift in Sources */,
@@ -484,10 +567,12 @@
 				A483B5672316E7C900862628 /* TextRedButton.swift in Sources */,
 				A4AB22A0231DEAB20013062A /* UIImage+SnapShot.swift in Sources */,
 				A483B5722316FBA100862628 /* Readeable.swift in Sources */,
+				A4704B71232839A700AB3E93 /* Exired.swift in Sources */,
 				A4AB2293231D97FD0013062A /* NavigationBar+configNavigationBar.swift in Sources */,
 				A483B58423183C6300862628 /* CoreDataModel.swift in Sources */,
 				A4570013231067D9000E9500 /* AppDelegate.swift in Sources */,
 				A4AB2295231D997F0013062A /* UICollectionView.swift in Sources */,
+				A4704B5D2322CF0700AB3E93 /* Notificable.swift in Sources */,
 				A483B56E2316FB3100862628 /* Writeable.swift in Sources */,
 				A4AB2298231D9CBF0013062A /* UIView+Shadow.swift in Sources */,
 				A45700602311FE10000E9500 /* ModalViewController.swift in Sources */,
@@ -498,12 +583,15 @@
 				A457001B231067D9000E9500 /* FridgeApp.xcdatamodeld in Sources */,
 				A483B5742316FD8E00862628 /* ActiveRecordType.swift in Sources */,
 				A457005223118DED000E9500 /* ProductCell.swift in Sources */,
+				A4704B6D232834F100AB3E93 /* WillExpiry.swift in Sources */,
 				A483B5762316FDC300862628 /* ModelType.swift in Sources */,
 				A4AB2291231D8F490013062A /* NavigationDelegate.swift in Sources */,
 				A4AB228F231D77920013062A /* Date+DaysUntil.swift in Sources */,
 				A42420E5231F3BAE004DB5DE /* Wiggleable.swift in Sources */,
+				A4704B7423286B0400AB3E93 /* DateComponets+FromTime.swift in Sources */,
 				A457004E231170C1000E9500 /* UIColors+AppColors.swift in Sources */,
 				A4AB229E231DE5320013062A /* ProductsViewControllerDelegate.swift in Sources */,
+				A4704B6B23280AD100AB3E93 /* NotificationManager.swift in Sources */,
 				A4C6B9E123130B9400BD5150 /* ColorCell.swift in Sources */,
 				A4AB229C231DB70E0013062A /* ProductCollectionView.swift in Sources */,
 				A45700582311BDA8000E9500 /* SeparatorCell.swift in Sources */,

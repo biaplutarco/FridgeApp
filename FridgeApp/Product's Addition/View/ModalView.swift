@@ -70,7 +70,6 @@ class ModalView: UIView {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.separatorInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         tableView.register(InputCell.self, forCellReuseIdentifier: "Cell")
-        
         return tableView
     }()
     

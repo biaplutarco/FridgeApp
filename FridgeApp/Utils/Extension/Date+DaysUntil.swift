@@ -16,6 +16,10 @@ extension Date {
         formatter.dateFormat = "MMMM dd, yyyy"
         guard let days = Calendar.current.dateComponents([.day], from: now, to: self).day else { return Int() }
         
-        return days
+        if Calendar.current.isDateInTomorrow(self) {
+            return 1
+        } else {
+            return days
+        }
     }
 }

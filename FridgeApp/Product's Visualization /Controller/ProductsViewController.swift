@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import UserNotifications
 
 class ProductsViewController: UIViewController {
     weak var delegate: ProductsViewControllerDelegate?
@@ -42,9 +43,9 @@ class ProductsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .backgroundColor
-//        products.forEach { $0.destroy() }
         addSubviews()
         configConstrints()
+        addNotifications()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -68,6 +69,13 @@ class ProductsViewController: UIViewController {
     
     func insertCollectionItem() {
         collectionView.insertItems(at: [IndexPath(item: 0, section: 0)])
+    }
+    
+    func addNotifications() {
+        products.forEach { (product) in
+            NotificationManager.shared.createNotificationToProduct(product)
+        }
+        NotificationManager.shared.schedule()
     }
     
     private func configConstrints() {
@@ -99,14 +107,14 @@ extension ProductsViewController: UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueCell(of: ProductCell.self, forIndexPath: indexPath)
-        cell.setUpCellFor(product: products[indexPath.row])
+        cell.setUpCellFor(product: products.reversed()[indexPath.row])
         cell.delegate = self
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let cell = collectionView.cellForItem(at: indexPath) as? ProductCell else { return }
+        guard let cell = collectionView.cellForItem(at: indexPath) as? ProductCell else { fatalError("error pegando a product cell") }
         cell.isWiggling.toggle()
     }
 }
